@@ -1,0 +1,14 @@
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+max_line_length = 80
+
+[*.{fsx, fs}]
+fsharp_space_before_member = true
+fsharp_max_infix_operator_expression = 40
+fsharp_max_value_binding_width = 40
+fsharp_multiline_block_brackets_on_same_column = true
+fsharp_newline_between_type_definition_and_members = true

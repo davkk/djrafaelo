@@ -1,0 +1,30 @@
+{
+	"name": "djrafaelo-astro",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "dotnet fable watch ./src --run astro dev",
+		"start": "astro dev",
+		"build": "dotnet fable ./src && astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"restore": "dotnet restore",
+		"predev": "pnpm restore",
+		"prebuild": "pnpm restore",
+		"postinstall": "pnpm restore"
+	},
+	"dependencies": {
+		"@astrojs/sitemap": "^1.0.1",
+		"@astrojs/solid-js": "^2.0.2",
+		"@astrojs/tailwind": "^3.0.1",
+		"@fontsource/dm-serif-text": "^4.5.10",
+		"@fontsource/saira": "^4.5.12",
+		"astro": "^2.0.14",
+		"astro-icon": "^0.8.0",
+		"astro-imagetools": "^0.8.1",
+		"astro-robots-txt": "^0.4.0",
+		"astro-seo": "^0.7.0",
+		"solid-js": "^1.6.11",
+		"tailwindcss": "^3.0.24"
+	}
+}

@@ -1,0 +1,30 @@
+.heading {
+    @apply font-serif tracking-wide text-4xl sm:text-5xl md:text-6xl xl:text-7xl
+}
+
+.subtext {
+    @apply text-sub uppercase tracking-wide
+}
+
+.icon {
+    display: inline-flex;
+}
+
+.icon svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+.icon.baseline svg {
+    position: relative;
+    top: 0.125em;
+}
+
+.paragraph {
+    @apply text-base md:text-xl lg:text-2xl mb-6
+}
+
+.paragraph > b {
+    @apply text-accent
+}
