@@ -22,9 +22,17 @@
 }
 
 .paragraph {
-    @apply text-base md:text-xl lg:text-2xl mb-6
+    @apply text-base sm:text-xl lg:text-2xl font-light mb-6
 }
 
 .paragraph > b {
-    @apply text-accent
+    @apply text-accent font-normal
+}
+
+.link {
+    @apply text-sub hover:text-light hover:underline underline-offset-2 transition-all ease-out duration-200
+}
+
+.link.external {
+    @apply after:content-['↗'] after:inline after:m-0
 }

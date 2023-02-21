@@ -1,86 +1,155 @@
 ---
-import Layout from "../layout/Layout.astro";
+import "@fontsource/saira/300.css";
+import "@fontsource/saira/400.css";
+import "@fontsource/dm-serif-text";
+
+import "../global.css";
 
 import Logo from "../components/Logo.astro";
 import Image from "../components/Image.astro";
 import Disks from "../components/Disks.astro";
-import Cta from "../components/Cta.astro";
-import { Icon } from "astro-icon";
+import Contact from "../components/Contact.astro";
+
+const options = ["oferta", "opinie", "kontakt"];
+
+const reviewImages = [
+    {
+        name: "BK9A9150.jpg",
+        alt: "Grupa ludzi bawiących się pod kolorową płachtą",
+    },
+    { name: "BK9A9157.jpg", alt: "" },
+    { name: "BK9A9021.jpg", alt: "" },
+    { name: "BK9A9025.jpg", alt: "" },
+];
 ---
 
-<Layout title="djrafaelo.pl">
-    <section
-        class="flex flex-col justify-center items-center gap-14 xl:gap-28 text-center mx-5 pt-32 pb-16 md:p-0 md:h-[80vh]"
-    >
-        <div class="w-full sm:w-2/3 md:w-1/2 xl:w-1/3">
-            <Logo />
-        </div>
-
-        <div>
-            <h1 class="heading mb-4 md:mb-10">
-                Doświadcz niezapomnianej zabawy!
-            </h1>
-            <h3 class="subtext text-sm md:text-lg lg:text-xl xl:text-2xl">
-                wesela • studniówki • imprezy okolicznościowe
-            </h3>
-        </div>
-    </section>
-
-    <section class="px-4">
-        <div class="relative mb-14">
-            <Disks
-                class="absolute top-[50%] right-[5%] h-4/5 z-[-1] opacity-10 transform translate-y-[-50%]"
-            />
-            <Image
-                src="https://djrafaelo-media.netlify.app/BK9A9028.jpg"
-                alt="Zdjęcie grupy bawiących się na imprezie ludzi, prowadzonej przez DJ Rafaelo"
-                class="w-2/3 rounded-xl"
-            />
-        </div>
-        <div class="relative text-right">
-            <Disks
-                class="absolute top-[50%] left-[5%] h-4/5 z-[-1] opacity-10 transform translate-y-[-50%]"
-            />
-            <Image
-                src="https://djrafaelo-media.netlify.app/BK9A9048.jpg"
-                alt=""
-                class="w-2/3 rounded-xl"
-            />
-        </div>
-    </section>
-
-    <section id="oferta" class="max-w-4xl mx-auto my-40 px-4">
-        <h2 class="heading mb-12 md:mb-20">Oferta</h2>
-
-        <p class="paragraph">
-            Oferuję usługi muzyczne na
-            <b>wesela, studniówki oraz imprezy okolicznościowe</b>.
-        </p>
-        <p class="paragraph">
-            Muzyka i animacje taneczne to <b>moja pasja</b>, dlatego najlepszą
-            premią za moją pracę jest <b>uśmiech gości</b>.
-        </p>
-        <p class="paragraph">
-            Dysponuję
-            <b>profesjonalnym sprzętem nagłaśniającym oraz oświetleniowym</b>,
-            co pozwala na doskonałą jakość dźwięku i stworzenie nastrojowej
-            atmosfery.
-        </p>
-        <p class="paragraph">
-            Gram legalne utwory, a moje animacje zapewniają wspaniałą zabawę,
-            zarówno dla
-            <b>dorosłych, jak i dzieci</b>.
-        </p>
-        <p class="paragraph mb-20">
-            Dla zainteresowanych, oferuję także prowadzenie imprez
-            <b>w języku niemieckim</b>.
-        </p>
-
-        <a
-            href="#kontakt"
-            class="mt-10 md:mt-16 inline-block px-6 py-2 rounded-full font-bold tracking-wide uppercase text-dark bg-accent shadow-glow transform hover:scale-[1.03] transition-transform ease-out duration-200 origin-bottom"
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>djrafaelo.pl</title>
+    </head>
+    <body class="bg-dark text-light font-sans h-[30000px]">
+        <header
+            class="hidden sm:flex justify-between p-5 absolute inset-x-0 top-0"
         >
-            Zadzwoń teraz →
-        </a>
-    </section>
-</Layout>
+            <Contact />
+
+            <nav
+                class="bg-dark fixed right-3 top-5 z-50 list-none text-right m-0 px-5 py-3 rounded-lg shadow-glow shadow-dark"
+            >
+                {
+                    options.map((option) => (
+                        <a
+                            href={`#${option}`}
+                            class="subtext link block mb-1 text-xs"
+                        >
+                            {option}
+                        </a>
+                    ))
+                }
+            </nav>
+        </header>
+
+        <main class="max-w-[1920px] mx-auto">
+            <section
+                class="flex flex-col justify-center items-center gap-14 md:gap-20 xl:gap-28 text-center mx-5 pt-12 py-20 sm:p-0 sm:h-[80svh]"
+            >
+                <div class="w-4/5 sm:w-2/3 lg:w-1/2 xl:w-2/5">
+                    <Logo />
+                </div>
+
+                <div>
+                    <h1 class="heading mb-6 md:mb-10">
+                        Doświadcz niezapomnianej zabawy!
+                    </h1>
+                    <h3
+                        class="subtext text-sm md:text-lg lg:text-xl xl:text-2xl"
+                    >
+                        wesela • studniówki • imprezy okolicznościowe
+                    </h3>
+                </div>
+            </section>
+
+            <section class="px-4">
+                <div class="relative mb-5 sm:mb-14">
+                    <Disks
+                        class="absolute top-[50%] right-[5%] h-4/5 z-[-1] transform translate-y-[-50%]"
+                    />
+                    <Image
+                        src="https://djrafaelo-media.netlify.app/BK9A9028.jpg"
+                        alt="Zdjęcie grupy bawiących się na imprezie ludzi, prowadzonej przez DJ Rafaelo"
+                        class="w-4/5 md:w-2/3 rounded-xl shadow-glow shadow-dark"
+                    />
+                </div>
+                <div class="relative text-right">
+                    <Disks
+                        class="absolute top-[50%] left-[5%] h-4/5 z-[-1] transform translate-y-[-50%]"
+                    />
+                    <Image
+                        src="https://djrafaelo-media.netlify.app/BK9A9048.jpg"
+                        alt=""
+                        class="w-4/5 md:w-2/3 rounded-xl shadow-glow shadow-dark"
+                    />
+                </div>
+            </section>
+
+            <section
+                id="oferta"
+                class="max-w-4xl mx-auto mt-20 mb-32 lg:my-40 px-6"
+            >
+                <h2 class="heading mb-12 md:mb-20">Oferta</h2>
+
+                <p class="paragraph">
+                    Oferuję usługi muzyczne na
+                    <b>wesela, studniówki oraz imprezy okolicznościowe</b>.
+                </p>
+                <p class="paragraph">
+                    Muzyka i animacje taneczne to <b>moja pasja</b>, dlatego
+                    najlepszą premią za moją pracę jest <b>uśmiech gości</b>.
+                </p>
+                <p class="paragraph">
+                    Dysponuję
+                    <b
+                        >profesjonalnym sprzętem nagłaśniającym oraz
+                        oświetleniowym</b
+                    >, co pozwala na doskonałą jakość dźwięku i stworzenie
+                    nastrojowej atmosfery.
+                </p>
+                <p class="paragraph">
+                    Gram legalne utwory, a moje animacje zapewniają wspaniałą
+                    zabawę, zarówno dla
+                    <b>dorosłych, jak i dzieci</b>.
+                </p>
+                <p class="paragraph mb-20">
+                    Dla zainteresowanych, oferuję także prowadzenie imprez
+                    <b>w języku niemieckim</b>.
+                </p>
+
+                <a
+                    href="#kontakt"
+                    class="mt-10 md:mt-16 inline-block px-6 py-2 rounded-full font-bold tracking-wide uppercase text-dark bg-accent shadow-glow transform hover:scale-[1.03] transition-transform ease-out duration-200 origin-bottom"
+                >
+                    Zadzwoń teraz →
+                </a>
+            </section>
+
+            <section id="#opinie" class="overflow-hidden bg-gradient-to-b from-[#0E0D0B_50%] to-[#1E1C18_50%]">
+                <div class="flex flex-nowrap px-4 pb-10 gap-5 overflow-hidden w-[170vw]">
+                    {
+                        reviewImages.map((image) => (
+                            <Image
+                                src={`https://djrafaelo-media.netlify.app/${image.name}`}
+                                alt={image.alt}
+                                class="flex-grow w-[25vw] basis-[25vw] rounded-lg shadow-inner"
+                            />
+                        ))
+                    }
+                </div>
+            </section>
+
+            <section class="bg-mute h-96">
+            </section>
+        </main>
+    </body>
+</html>
