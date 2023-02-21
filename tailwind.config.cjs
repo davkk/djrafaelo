@@ -8,6 +8,7 @@ module.exports = {
                 dark: "#0E0D0B",
                 light: "#FEF4E3",
                 sub: "#B0A38D",
+                mute: "#1E1C18",
             },
             fontFamily: {
                 sans: "Saira, sans-serif",
