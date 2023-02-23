@@ -17,6 +17,21 @@ module.exports = {
             boxShadow: {
                 "glow": "0px 7px 30px -5px rgb(202, 159, 84, 0.6)",
             },
+            keyframes: {
+                "slide-up": {
+                    "0%": {
+                        transform: "translateX(-1em) scale(0.98)",
+                        opacity: 0,
+                    },
+                    "100%": {
+                        transform: "translateX(0) scale(1)",
+                        opactiy: 1,
+                    },
+                }
+            },
+            animation: {
+                "slide-up": "slide-up 150ms ease-out forwards",
+            }
         },
     },
     plugins: [],

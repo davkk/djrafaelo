@@ -3,6 +3,7 @@ node_modules/
 # Fable generated files
 .fable
 *.fs.js
+*.fs.jsx
 bundle.js
 temp/**
 
