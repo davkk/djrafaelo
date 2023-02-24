@@ -2,7 +2,7 @@ import { Record } from "../fable_modules/fable-library.4.0.0-theta-018/Types.js"
 import { array_type, record_type, string_type, int32_type } from "../fable_modules/fable-library.4.0.0-theta-018/Reflection.js";
 import { fromValue, array, string, int, object } from "../fable_modules/Thoth.Json.10.0.0/Decode.fs.js";
 import { uncurry } from "../fable_modules/fable-library.4.0.0-theta-018/Util.js";
-import { Show, createSignal, For } from "solid-js";
+import { Show, For, createSignal } from "solid-js";
 import { ChevronRight, ChevronLeft, Star } from "./Icons.jsx";
 import { toArray } from "../fable_modules/fable-library.4.0.0-theta-018/Seq.js";
 import { rangeDouble } from "../fable_modules/fable-library.4.0.0-theta-018/Range.js";
@@ -54,30 +54,30 @@ export function tryDecode(value, decoder, callback) {
     }
 }
 
+export const patternInput$004040$002D156 = createSignal(0);
+
+export const setCurrentReview = patternInput$004040$002D156[1];
+
+export const currentReview = patternInput$004040$002D156[0];
+
 export function Review($props) {
-    return <div class="transition-all transform -translate-y-1 scale-90 origin-bottom animate-slide-up animate-once">
+    return <div class="text-center opactiy-0 transition-all transform -translate-y-1 scale-90 origin-left animate-slide-up animate-once">
         <p class="paragraph">
             {`"${$props.review.content}"`}
         </p>
-        <div class="flex items-center gap-1 text-accent text-xl md:text-2xl">
-            <h4 class="inline-flex items-center gap-2 text-sub text-lg md:text-2xl font-serif tracking-wide after:content-['•']">
-                {$props.review.name}
-            </h4>
+        <div class="inline-flex items-center gap-2 text-accent text-xl md:text-2xl">
             <For each={toArray(rangeDouble(1, 1, $props.review.stars))}>
                 {(_arg, _arg_1) => <Star></Star>}
             </For>
+            <h4 class="inline-flex items-center gap-2 text-sub text-base sm:text-lg md:text-2xl font-serif tracking-wide before:content-['•']">
+                {$props.review.name}
+            </h4>
         </div>
     </div>;
 }
 
-export const patternInput$004079$002D140 = createSignal(0);
-
-export const setCurrentReview = patternInput$004079$002D140[1];
-
-export const currentReview = patternInput$004079$002D140[0];
-
 export function Button($props) {
-    return <button class={"absolute top-0 sm:top-1/2 sm:-translate-y-1/2 text-accent text-4xl sm:text-5xl transition-transform ease-out duration-200 transform" + (` ${$props.classes}`)}
+    return <button class={"text-accent text-4xl transition-transform ease-out duration-200 absolute bottom-full sm:static" + (` ${$props.classes}`)}
         role={join(" ", ["button"])}
         onClick={$props.onClick}>
         {$props.icon}
@@ -85,26 +85,26 @@ export function Button($props) {
 }
 
 export function Reviews($props) {
-    return tryDecode($props.props, uncurry(2, propsDecoder), (props_1) => <div class="relative flex justify-between items-center sm:mx-10 xl:mx-40 h-[80vh] sm:h-[20vh]">
-        <Button classes="left-0 hover:-translate-x-1"
-            onClick={(_arg) => {
-                let x, m;
-                setCurrentReview((x = ((currentReview() - 1) | 0), (m = (props_1.items.length | 0), ((x % m) + m) % m)));
-            }}
-            icon={<ChevronLeft></ChevronLeft>}></Button>
-        <div class="absolute top-0 sm:top-1/2 inset-x-10 sm:inset-x-24 lg:inset-x-56 transform sm:-translate-y-1/2">
+    return tryDecode($props.props, uncurry(2, propsDecoder), (props_1) => <div class="relative flex flex-col justify-center items-center gap-5 h-[33vh] max-h-[500px] p-5">
+        <div class="max-w-[1000px] w-full absolute top-0 sm:top-1/2 left-1/2 flex gap-10 md:gap-32 h-fit transform -translate-x-1/2 sm:-translate-y-1/2 pt-8">
+            <Button classes="sm:hover:-translate-x-1 left-0"
+                onClick={(_arg) => {
+                    let x, m;
+                    setCurrentReview((x = ((currentReview() - 1) | 0), (m = (props_1.items.length | 0), ((x % m) + m) % m)));
+                }}
+                icon={<ChevronLeft></ChevronLeft>}></Button>
             <For each={props_1.items}>
                 {(review, index) => <Show when={currentReview() === index()}>
                     <Review review={review}></Review>
                 </Show>}
             </For>
+            <Button classes="sm:hover:translate-x-1 right-0"
+                onClick={(_arg_1) => {
+                    let x_1, m_1;
+                    setCurrentReview((x_1 = ((currentReview() + 1) | 0), (m_1 = (props_1.items.length | 0), ((x_1 % m_1) + m_1) % m_1)));
+                }}
+                icon={<ChevronRight></ChevronRight>}></Button>
         </div>
-        <Button classes="right-0 hover:translate-x-1"
-            onClick={(_arg_1) => {
-                let x_1, m_1;
-                setCurrentReview((x_1 = ((currentReview() + 1) | 0), (m_1 = (props_1.items.length | 0), ((x_1 % m_1) + m_1) % m_1)));
-            }}
-            icon={<ChevronRight></ChevronRight>}></Button>
     </div>);
 }
 

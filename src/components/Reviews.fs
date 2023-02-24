@@ -37,54 +37,54 @@ let tryDecode<'t> value decoder callback =
     | Ok(decoded) -> fun () -> callback decoded
     | Error err -> failwith $"Failed to decode {nameof value}: {err}"
 
+let currentReview, setCurrentReview =
+    Solid.createSignal (0)
+
 [<JSX.Component>]
 let Review (review) =
     [
         Attr.className
-            "transition-all transform -translate-y-1 scale-90 origin-bottom animate-slide-up animate-once"
+            "text-center opactiy-0 transition-all transform -translate-y-1 scale-90 origin-left animate-slide-up animate-once"
         [
             Html.p
                 [
                     Attr.className "paragraph"
                     Html.children [ Html.text $"\"{review.content}\"" ]
                 ]
-
             [
                 Attr.className
-                    "flex items-center gap-1 text-accent text-xl md:text-2xl"
+                    "inline-flex items-center gap-2 text-accent text-xl md:text-2xl"
                 [
+                    Solid.For(
+                        [| 1 .. review.stars |],
+                        fun _ _ -> Icons.Star()
+                    )
+
                     Html.h4
                         [
                             Attr.className
-                                "inline-flex items-center gap-2 text-sub text-lg md:text-2xl font-serif tracking-wide after:content-['•']"
+                                "inline-flex items-center gap-2 text-sub text-base sm:text-lg md:text-2xl font-serif tracking-wide before:content-['•']"
 
                             Html.text review.name
                             |> List.singleton
                             |> Html.children
                         ]
-
-                    Solid.For(
-                        [| 1 .. review.stars |],
-                        fun _ _ -> Icons.Star()
-                    )
                 ]
                 |> Html.children
             ]
             |> Html.div
+
         ]
         |> Html.children
     ]
     |> Html.div
-
-let currentReview, setCurrentReview =
-    Solid.createSignal (0)
 
 [<JSX.Component>]
 let Button classes onClick icon =
     Html.button
         [
             Attr.className (
-                "absolute top-0 sm:top-1/2 sm:-translate-y-1/2 text-accent text-4xl sm:text-5xl transition-transform ease-out duration-200 transform"
+                "text-accent text-4xl transition-transform ease-out duration-200 absolute bottom-full sm:static"
                 + $" {classes}"
             )
             Attr.role "button"
@@ -102,46 +102,47 @@ let Reviews (props: JsonValue) =
         (fun props ->
             [
                 Attr.className
-                    "relative flex justify-between items-center sm:mx-10 xl:mx-40 h-[80vh] sm:h-[20vh]"
+                    "relative flex flex-col justify-center items-center gap-5 h-[33vh] max-h-[500px] p-5"
 
                 [
-                    Icons.ChevronLeft()
-                    |> Button
-                        "left-0 hover:-translate-x-1"
-                        (fun _ ->
-                            setCurrentReview (
-                                (currentReview () - 1)
-                                %/ props.items.Length
-                            )
-                        )
 
                     [
                         Attr.className
-                            "absolute top-0 sm:top-1/2 inset-x-10 sm:inset-x-24 lg:inset-x-56 transform sm:-translate-y-1/2"
-                        Solid.For(
-                            props.items,
-                            (fun review index ->
-                                Solid.Show(
-                                    currentReview () = index (),
-                                    Review review
+                            "max-w-[1000px] w-full absolute top-0 sm:top-1/2 left-1/2 flex gap-10 md:gap-32 h-fit transform -translate-x-1/2 sm:-translate-y-1/2 pt-8"
+                        [
+                            Icons.ChevronLeft()
+                            |> Button
+                                "sm:hover:-translate-x-1 left-0"
+                                (fun _ ->
+                                    setCurrentReview (
+                                        (currentReview () - 1)
+                                        %/ props.items.Length
+                                    )
+                                )
+                            Solid.For(
+                                props.items,
+                                (fun review index ->
+                                    Solid.Show(
+                                        currentReview () = index (),
+                                        Review review
+                                    )
                                 )
                             )
-                        )
-                        |> List.singleton
+                            Icons.ChevronRight()
+                            |> Button
+                                "sm:hover:translate-x-1 right-0"
+                                (fun _ ->
+                                    setCurrentReview (
+                                        (currentReview () + 1)
+                                        %/ props.items.Length
+                                    )
+                                )
+                        ]
                         |> Html.children
 
                     ]
                     |> Html.div
 
-                    Icons.ChevronRight()
-                    |> Button
-                        "right-0 hover:translate-x-1"
-                        (fun _ ->
-                            setCurrentReview (
-                                (currentReview () + 1)
-                                %/ props.items.Length
-                            )
-                        )
                 ]
                 |> Html.children
             ]

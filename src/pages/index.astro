@@ -85,7 +85,7 @@ const reviews: Array<Review> = [
             </nav>
         </header>
 
-        <main class="max-w-[1920px] mx-auto">
+        <main class="">
             <section
                 class="flex flex-col justify-center items-center gap-14 md:gap-20 xl:gap-28 text-center mx-5 pt-12 py-20 sm:p-0 sm:h-[80svh]"
             >
@@ -130,9 +130,9 @@ const reviews: Array<Review> = [
 
             <section
                 id="oferta"
-                class="max-w-4xl mx-auto mt-20 mb-32 lg:my-40 px-6"
+                class="max-w-4xl mx-auto mt-20 my-32 lg:mt-40 lg:mb-56 px-6"
             >
-                <h2 class="heading mb-12 md:mb-20">Oferta</h2>
+                <h2 class="heading mb-12 md:mb-20 text-sub">Oferta</h2>
 
                 <p class="paragraph">
                     Oferuję usługi muzyczne na
@@ -170,10 +170,10 @@ const reviews: Array<Review> = [
 
             <section
                 id="#opinie"
-                class="overflow-hidden bg-gradient-to-b from-[#0E0D0B_50%] to-[#1E1C18_50%]"
+                class="bg-gradient-to-b from-[#0E0D0B_50%] to-[#1E1C18_50%] overflow-hidden"
             >
                 <div
-                    class="flex flex-nowrap px-4 gap-5 overflow-hidden w-[170vw]"
+                    class="flex flex-nowrap px-4 gap-5 w-[170vw]"
                 >
                     {
                         reviewImages.map((image) => (
@@ -187,8 +187,8 @@ const reviews: Array<Review> = [
                 </div>
             </section>
 
-            <section class="bg-mute py-20">
-                <h2 class="heading text-center mb-20">Co o mnie myślą...</h2>
+            <section class="bg-mute px-5 py-32">
+                <h2 class="heading text-center mb-16 text-sub">Co o mnie myślą</h2>
                 <Reviews items={reviews} client:visible />
             </section>
         </main>
