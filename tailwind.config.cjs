@@ -20,7 +20,7 @@ module.exports = {
             keyframes: {
                 "slide-up": {
                     "0%": {
-                        transform: "translateX(-1em) scale(0.98)",
+                        transform: "translateX(0.7em)",
                         opacity: 0,
                     },
                     "100%": {
@@ -30,7 +30,7 @@ module.exports = {
                 }
             },
             animation: {
-                "slide-up": "slide-up 150ms ease-out forwards",
+                "slide-up": "slide-up 200ms ease-out forwards",
             }
         },
     },
