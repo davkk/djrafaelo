@@ -9,7 +9,7 @@ type Props = {
     objectFit?: string;
 };
 
-const { name, alt, class: className } = Astro.props as Props;
+const { name, alt, class: className, ...rest } = Astro.props as Props;
 
 const src = import.meta.env.PROD
     ? `https://media.djrafaelo.pl/${name}`
@@ -26,5 +26,5 @@ const src = import.meta.env.PROD
             class: "rounded-xl " + className,
         },
     }}
-    {...Astro.props}
+    {...rest}
 />
