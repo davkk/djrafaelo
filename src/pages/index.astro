@@ -63,7 +63,7 @@ const reviews: Array<Review> = [
         <meta name="viewport" content="width=device-width" />
         <title>djrafaelo.pl</title>
     </head>
-    <body class="bg-dark text-light font-sans h-[3000px]">
+    <body class="bg-dark text-light font-sans">
         <header
             class="hidden sm:flex justify-between p-5 absolute inset-x-3 top-3"
         >
@@ -132,7 +132,7 @@ const reviews: Array<Review> = [
 
             <section
                 id="oferta"
-                class="max-w-4xl mx-auto mt-20 my-32 lg:mt-40 lg:mb-56 px-6"
+                class="max-w-4xl mx-auto pt-20 pb-32 lg:pt-40 lg:pb-56 px-6"
             >
                 <h2 class="heading mb-12 md:mb-20 text-sub">Oferta</h2>
 
@@ -206,7 +206,7 @@ const reviews: Array<Review> = [
                 />
 
                 <div
-                    class="flex flex-col justify-center w-4/5 basis-4/5 md:w-3/5 md:basis-3/5"
+                    class="flex flex-col justify-center w-full basis-full sm:w-4/5 sm:basis-4/5 md:w-3/5 md:basis-3/5"
                 >
                     <div>
                         <h2 class="heading mb-8">Przekonaj się sam!</h2>
@@ -218,11 +218,22 @@ const reviews: Array<Review> = [
                         </p>
                     </div>
 
-                    <div class="text-base sm:text-xl lg:text-2xl mt-14 md:mt-24">
+                    <div
+                        class="text-base sm:text-xl lg:text-2xl mt-14 md:mt-24"
+                    >
                         <Contact />
                     </div>
                 </div>
             </section>
         </main>
+
+        <footer class="flex justify-between items-center gap-16 p-5 md:p-10">
+            <div class="w-36 md:w-48">
+                <Logo />
+            </div>
+            <span class="text-sub text-xs">
+                djrafaelo.pl &copy; {new Date().getFullYear()}
+            </span>
+        </footer>
     </body>
 </html>
