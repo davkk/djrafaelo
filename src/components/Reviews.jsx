@@ -54,58 +54,62 @@ export function tryDecode(value, decoder, callback) {
     }
 }
 
-export const patternInput$004040$002D156 = createSignal(0);
+export const patternInput$004040$002D8 = createSignal(0);
 
-export const setCurrentReview = patternInput$004040$002D156[1];
+export const setCurrentReview = patternInput$004040$002D8[1];
 
-export const currentReview = patternInput$004040$002D156[0];
+export const currentReview = patternInput$004040$002D8[0];
 
 export function Review($props) {
+    const stars = <For each={toArray(rangeDouble(1, 1, $props.review.stars))}>
+        {(_arg, _arg_1) => <Star></Star>}
+    </For>;
+    const name = <h4 class="inline-flex items-center gap-2 text-sub text-base sm:text-lg md:text-2xl font-serif tracking-wide before:content-['•']">
+        {$props.review.name}
+    </h4>;
     return <div class="text-center opactiy-0 transition-all transform -translate-y-1 scale-90 origin-left animate-slide-up animate-once">
         <p class="paragraph">
             {`"${$props.review.content}"`}
         </p>
         <div class="inline-flex items-center gap-2 text-accent text-xl md:text-2xl">
-            <For each={toArray(rangeDouble(1, 1, $props.review.stars))}>
-                {(_arg, _arg_1) => <Star></Star>}
-            </For>
-            <h4 class="inline-flex items-center gap-2 text-sub text-base sm:text-lg md:text-2xl font-serif tracking-wide before:content-['•']">
-                {$props.review.name}
-            </h4>
+            {stars}
+            {name}
         </div>
     </div>;
 }
 
-export function Button($props) {
-    return <button class={"text-accent text-4xl transition-transform ease-out duration-200 absolute bottom-full sm:static" + (` ${$props.classes}`)}
-        role={join(" ", ["button"])}
-        onClick={$props.onClick}>
-        {$props.icon}
-    </button>;
-}
-
 export function Reviews($props) {
-    return tryDecode($props.props, uncurry(2, propsDecoder), (props_1) => <div class="relative flex flex-col justify-center items-center gap-5 h-[33vh] max-h-[500px] p-5">
-        <div class="max-w-[1000px] w-full absolute top-0 sm:top-1/2 left-1/2 flex gap-10 md:gap-32 h-fit transform -translate-x-1/2 sm:-translate-y-1/2 pt-8">
-            <Button classes="sm:hover:-translate-x-1 left-0"
-                onClick={(_arg) => {
-                    let x, m;
-                    setCurrentReview((x = ((currentReview() - 1) | 0), (m = (props_1.items.length | 0), ((x % m) + m) % m)));
-                }}
-                icon={<ChevronLeft></ChevronLeft>}></Button>
-            <For each={props_1.items}>
-                {(review, index) => <Show when={currentReview() === index()}>
-                    <Review review={review}></Review>
-                </Show>}
-            </For>
-            <Button classes="sm:hover:translate-x-1 right-0"
-                onClick={(_arg_1) => {
-                    let x_1, m_1;
-                    setCurrentReview((x_1 = ((currentReview() + 1) | 0), (m_1 = (props_1.items.length | 0), ((x_1 % m_1) + m_1) % m_1)));
-                }}
-                icon={<ChevronRight></ChevronRight>}></Button>
-        </div>
-    </div>);
+    return tryDecode($props.props, uncurry(2, propsDecoder), (props_1) => {
+        const buttonClasses = "text-accent text-4xl transition-transform ease-out duration-200 absolute bottom-full sm:static";
+        const buttonLeft = <button class={`${buttonClasses} sm:hover:-translate-x-1 left-0`}
+            role={join(" ", ["button"])}
+            onClick={(_arg) => {
+                let x, m;
+                setCurrentReview((x = ((currentReview() - 1) | 0), (m = (props_1.items.length | 0), ((x % m) + m) % m)));
+            }}>
+            <ChevronLeft></ChevronLeft>
+        </button>;
+        const buttonRight = <button class={`${buttonClasses} sm:hover:translate-x-1 right-0`}
+            role={join(" ", ["button"])}
+            onClick={(_arg_1) => {
+                let x_1, m_1;
+                setCurrentReview((x_1 = ((currentReview() - 1) | 0), (m_1 = (props_1.items.length | 0), ((x_1 % m_1) + m_1) % m_1)));
+            }}>
+            <ChevronRight></ChevronRight>
+        </button>;
+        const reviews = <For each={props_1.items}>
+            {(review, index) => <Show when={currentReview() === index()}>
+                <Review review={review}></Review>
+            </Show>}
+        </For>;
+        return <div class="relative flex flex-col justify-center items-center gap-5 h-[33vh] max-h-[500px] p-5">
+            <div class="max-w-[1000px] w-full absolute top-0 sm:top-1/2 left-1/2 flex gap-10 md:gap-32 h-fit transform -translate-x-1/2 sm:-translate-y-1/2 pt-8">
+                {buttonLeft}
+                {reviews}
+                {buttonRight}
+            </div>
+        </div>;
+    });
 }
 
 export default ((props) => <Reviews props={props}></Reviews>);
