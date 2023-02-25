@@ -63,11 +63,13 @@ const reviews: Array<Review> = [
         <meta name="viewport" content="width=device-width" />
         <title>djrafaelo.pl</title>
     </head>
-    <body class="bg-dark text-light font-sans h-[30000px]">
+    <body class="bg-dark text-light font-sans h-[3000px]">
         <header
-            class="hidden sm:flex justify-between p-5 absolute inset-x-0 top-0"
+            class="hidden sm:flex justify-between p-5 absolute inset-x-3 top-3"
         >
-            <Contact />
+            <div class="text-xs">
+                <Contact />
+            </div>
 
             <nav
                 class="bg-dark fixed right-3 top-5 z-50 list-none text-right m-0 px-5 py-3 rounded-lg shadow-glow shadow-dark"
@@ -111,9 +113,9 @@ const reviews: Array<Review> = [
                         class="absolute top-[50%] right-[5%] h-4/5 z-[-1] transform translate-y-[-50%]"
                     />
                     <Image
-                        src="https://djrafaelo-media.netlify.app/BK9A9028.jpg"
+                        name="BK9A9028.jpg"
                         alt="Zdjęcie grupy bawiących się na imprezie ludzi, prowadzonej przez DJ Rafaelo"
-                        class="w-4/5 md:w-2/3 rounded-xl shadow-glow shadow-dark"
+                        class="w-4/5 md:w-2/3 shadow-glow shadow-dark"
                     />
                 </div>
                 <div class="relative text-right">
@@ -121,9 +123,9 @@ const reviews: Array<Review> = [
                         class="absolute top-[50%] left-[5%] h-4/5 z-[-1] transform translate-y-[-50%]"
                     />
                     <Image
-                        src="https://djrafaelo-media.netlify.app/BK9A9048.jpg"
+                        name="BK9A9048.jpg"
                         alt=""
-                        class="w-4/5 md:w-2/3 rounded-xl shadow-glow shadow-dark"
+                        class="w-4/5 md:w-2/3 shadow-glow shadow-dark"
                     />
                 </div>
             </section>
@@ -172,15 +174,13 @@ const reviews: Array<Review> = [
                 id="#opinie"
                 class="bg-gradient-to-b from-[#0E0D0B_50%] to-[#1E1C18_50%] overflow-hidden"
             >
-                <div
-                    class="flex flex-nowrap px-4 gap-5 w-[170vw]"
-                >
+                <div class="flex flex-nowrap px-4 gap-5 w-[170vw]">
                     {
                         reviewImages.map((image) => (
                             <Image
-                                src={`https://djrafaelo-media.netlify.app/${image.name}`}
+                                name={image.name}
                                 alt={image.alt}
-                                class="flex-grow w-[25vw] basis-[25vw] rounded-lg shadow-inner"
+                                class="flex-grow w-[25vw] basis-[25vw]"
                             />
                         ))
                     }
@@ -188,8 +188,40 @@ const reviews: Array<Review> = [
             </section>
 
             <section id="opinie" class="bg-mute px-5 py-32">
-                <h2 class="heading text-center mb-16 text-sub">Co o mnie myślą</h2>
+                <h2 class="heading text-center mb-16 sm:mb-5 text-sub">
+                    Co o mnie myślą
+                </h2>
                 <Reviews items={reviews} client:visible />
+            </section>
+
+            <section
+                id="kontakt"
+                class="flex justify-center md:items-stretch flex-col md:flex-row px-8 lg:px-20 py-20 lg:py-32 gap-14 lg:gap-20 xl:gap-40"
+            >
+                <Image
+                    name="contact-image.jpg"
+                    alt="TODO:"
+                    class="inset-0 mx-auto w-full basis-full md:w-2/5 md:basis-2/5 h-full"
+                    objectPosition="60% 50%"
+                />
+
+                <div
+                    class="flex flex-col justify-center w-4/5 basis-4/5 md:w-3/5 md:basis-3/5"
+                >
+                    <div>
+                        <h2 class="heading mb-8">Przekonaj się sam!</h2>
+
+                        <p class="paragraph">
+                            Jeśli szukasz <b>profesjonalnego DJ-a</b> z bogatym
+                            <b>doświadczeniem</b>, nie wahaj się i skontaktuj ze
+                            mną już dzisiaj!
+                        </p>
+                    </div>
+
+                    <div class="text-base sm:text-xl lg:text-2xl mt-14 md:mt-24">
+                        <Contact />
+                    </div>
+                </div>
             </section>
         </main>
     </body>

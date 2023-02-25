@@ -54,11 +54,11 @@ export function tryDecode(value, decoder, callback) {
     }
 }
 
-export const patternInput$004040$002D8 = createSignal(0);
+export const patternInput$004040$002D3 = createSignal(0);
 
-export const setCurrentReview = patternInput$004040$002D8[1];
+export const setCurrentReview = patternInput$004040$002D3[1];
 
-export const currentReview = patternInput$004040$002D8[0];
+export const currentReview = patternInput$004040$002D3[0];
 
 export function Review($props) {
     const stars = <For each={toArray(rangeDouble(1, 1, $props.review.stars))}>

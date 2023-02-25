@@ -2,12 +2,18 @@
 import { Img } from "astro-imagetools/components";
 
 type Props = {
-    src: string;
+    name: string;
     alt: string;
     class?: string;
+    objectPosition?: string;
+    objectFit?: string;
 };
 
-const { src, alt, class: className } = Astro.props as Props;
+const { name, alt, class: className } = Astro.props as Props;
+
+const src = import.meta.env.PROD
+    ? `https://media.djrafaelo.pl/${name}`
+    : `/src/images/${name}`;
 ---
 
 <Img
@@ -17,7 +23,8 @@ const { src, alt, class: className } = Astro.props as Props;
     breakpoints={[640, 768, 1024, 1280, 1536, 1920]}
     attributes={{
         img: {
-            class: className,
+            class: "rounded-xl " + className,
         },
     }}
+    {...Astro.props}
 />

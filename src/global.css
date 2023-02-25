@@ -1,5 +1,5 @@
 .heading {
-    @apply font-serif tracking-wide text-4xl sm:text-5xl md:text-6xl xl:text-7xl
+    @apply font-serif tracking-wide leading-tight text-4xl sm:text-5xl md:text-6xl xl:text-7xl
 }
 
 .subtext {
@@ -22,7 +22,7 @@
 }
 
 .paragraph {
-    @apply text-base sm:text-xl lg:text-2xl font-light mb-5
+    @apply text-base sm:text-xl lg:text-2xl font-light mb-5 leading-relaxed
 }
 
 .paragraph > b {
