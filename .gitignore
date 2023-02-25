@@ -1,4 +1,5 @@
 node_modules/
+images/
 
 # Fable generated files
 .fable
