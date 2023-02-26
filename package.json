@@ -8,7 +8,7 @@
 		"build": "dotnet fable ./src -e jsx && astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"restore": "dotnet restore ./src",
+		"restore": "dotnet tool restore",
 		"predev": "pnpm restore",
 		"prebuild": "pnpm restore",
 		"postinstall": "pnpm restore"
