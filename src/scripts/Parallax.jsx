@@ -54,10 +54,10 @@ export function throttle(time, callback) {
 }
 
 document.addEventListener("scroll", (_arg) => {
-    const parallaxRatio = 0.3;
+    const parallaxRate = 0.2;
     const translationValue = (element) => {
-        const parallax = parallaxRatio * ((window.pageYOffset + window.innerHeight) - element.offsetTop);
-        const offset = parallaxRatio * (element.offsetTop - window.innerHeight);
+        const parallax = parallaxRate * ((window.pageYOffset + window.innerHeight) - element.offsetTop);
+        const offset = parallaxRate * (element.offsetTop - window.innerHeight);
         if (offset < 0) {
             return parallax + offset;
         }
@@ -68,9 +68,9 @@ document.addEventListener("scroll", (_arg) => {
     const transitionStyle = "transition: all 100ms ease-out";
     let observerOptions;
     const opts = {};
-    opts.rootMargin = "50% 0px";
+    opts.rootMargin = "20% 0px";
     observerOptions = opts;
-    throttle(20, () => {
+    throttle(10, () => {
         iterate((element_1) => {
             const observer = new IntersectionObserver(((entries, _arg_1) => {
                 entries.forEach((entry) => {

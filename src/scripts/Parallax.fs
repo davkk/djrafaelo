@@ -55,16 +55,16 @@ let throttle (time: int) (callback: unit -> unit) =
 document.addEventListener (
     "scroll",
     (fun _ ->
-        let parallaxRatio = 0.3
+        let parallaxRate = 0.2
 
         let translationValue (element: HTMLElement) =
             let parallax =
-                parallaxRatio
+                parallaxRate
                 * (window.pageYOffset + window.innerHeight
                    - element.offsetTop)
 
             let offset =
-                parallaxRatio
+                parallaxRate
                 * (element.offsetTop - window.innerHeight)
 
             if offset < 0 then parallax + offset else parallax
@@ -76,7 +76,7 @@ document.addEventListener (
             let opts =
                 createEmpty<IntersectionObserverOptions>
 
-            opts.rootMargin <- "50% 0px"
+            opts.rootMargin <- "20% 0px"
             opts
 
         (fun () ->
@@ -108,6 +108,6 @@ document.addEventListener (
                 |> Parallax.bind observer.observe
             )
         )
-        |> throttle 20
+        |> throttle 10
     )
 )
