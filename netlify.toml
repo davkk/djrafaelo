@@ -1,0 +1,4 @@
+[[redirects]]
+from = "https://djrafaelo.netlify.app/*"
+to = "https://djrafaelo.pl/:splat"
+status = 301
