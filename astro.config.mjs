@@ -17,5 +17,12 @@ import solidJs from "@astrojs/solid-js";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [astroImageTools, tailwind(), sitemap(), robotsTxt(), solidJs()]
+    integrations: [astroImageTools, tailwind(), sitemap(), robotsTxt(), solidJs()],
+    vite: {
+        server: {
+            hmr: {
+                timeout: 3000,
+            }
+        }
+    }
 });
