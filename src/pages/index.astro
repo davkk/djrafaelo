@@ -64,21 +64,19 @@ const reviews: Array<Review> = [
         <title>djrafaelo.pl</title>
     </head>
     <body class="bg-dark text-light font-sans">
-        <header
-            class="hidden sm:flex justify-between p-5 absolute inset-x-3 top-3"
-        >
-            <div class="text-xs">
+        <header class="flex justify-between p-5 absolute inset-x-3 top-3">
+            <div class="text-xs hidden sm:block">
                 <Contact />
             </div>
 
             <nav
-                class="bg-dark fixed right-3 top-5 z-50 list-none text-right m-0 px-5 py-3 rounded-lg shadow-glow shadow-dark"
+                class="bg-dark fixed right-3 bottom-3 sm:top-5 sm:bottom-auto z-50 border-2 border-sub sm:border-none list-none text-right m-0 px-5 py-3 rounded-lg shadow-glow shadow-dark"
             >
                 {
                     options.map((option) => (
                         <a
                             href={`#${option}`}
-                            class="subtext link block mb-1 text-xs"
+                            class="subtext uppercase link block mb-1 text-base sm:text-xs"
                         >
                             {option}
                         </a>
@@ -96,7 +94,7 @@ const reviews: Array<Review> = [
                 </div>
 
                 <div>
-                    <h1 class="heading mb-6 md:mb-10">
+                    <h1 class="heading mb-6">
                         Doświadcz niezapomnianej zabawy!
                     </h1>
                     <h3
@@ -174,7 +172,9 @@ const reviews: Array<Review> = [
                 id="#opinie"
                 class="bg-gradient-to-b from-[#0E0D0B_50%] to-[#1E1C18_50%] overflow-hidden"
             >
-                <div class="parallax-left flex flex-nowrap px-4 gap-5 w-[200vw] md:w-[150vw] xl:w-[130vw]">
+                <div
+                    class="parallax-left flex flex-nowrap px-4 gap-5 w-[200vw] md:w-[150vw] xl:w-[130vw]"
+                >
                     {
                         reviewImages.map((image) => (
                             <Image
@@ -218,16 +218,14 @@ const reviews: Array<Review> = [
                         </p>
                     </div>
 
-                    <div
-                        class="text-base sm:text-xl lg:text-2xl mt-14 md:mt-24"
-                    >
+                    <div class="text-lg sm:text-xl lg:text-2xl mt-14 md:mt-24">
                         <Contact />
                     </div>
                 </div>
             </section>
         </main>
 
-        <footer class="flex justify-between items-center gap-16 p-5 md:p-10">
+        <footer class="flex sm:justify-between items-center gap-16 p-5 md:p-10">
             <div class="w-36 md:w-48">
                 <Logo />
             </div>
@@ -237,9 +235,7 @@ const reviews: Array<Review> = [
         </footer>
 
         <script>
-            import "../scripts/Parallax.jsx"
+            import "../scripts/Parallax.jsx";
         </script>
     </body>
 </html>
-
-

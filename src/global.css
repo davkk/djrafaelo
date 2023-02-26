@@ -3,7 +3,7 @@
 }
 
 .subtext {
-    @apply text-sub uppercase tracking-wide
+    @apply text-sub tracking-wide
 }
 
 .icon {
