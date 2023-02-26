@@ -9,7 +9,8 @@ specifiers:
   astro: ^2.0.14
   astro-imagetools: ^0.8.1
   astro-robots-txt: ^0.4.0
-  astro-seo: ^0.7.0
+  astro-seo-meta: ^2.0.0
+  astro-seo-schema: ^2.0.0
   solid-icons: ^1.0.4
   solid-js: ^1.6.11
   tailwindcss: ^3.0.24
@@ -23,7 +24,8 @@ dependencies:
   astro: 2.0.14
   astro-imagetools: 0.8.1_astro@2.0.14
   astro-robots-txt: 0.4.0
-  astro-seo: 0.7.0
+  astro-seo-meta: 2.0.0_astro@2.0.14
+  astro-seo-schema: 2.0.0_astro@2.0.14
   solid-icons: 1.0.4_solid-js@1.6.11
   solid-js: 1.6.11
   tailwindcss: 3.2.7
@@ -1335,8 +1337,23 @@ packages:
       zod: 3.20.6
     dev: false
 
-  /astro-seo/0.7.0:
-    resolution: {integrity: sha512-G7zJUr4lfKLeqfWx2g5rfuBsOsIOfqxIOqErQfrMsMchDFfLFxNKAuW8yAo8hynJJwBvtGyS/vOXgGdMVVCFrA==}
+  /astro-seo-meta/2.0.0_astro@2.0.14:
+    resolution: {integrity: sha512-T/c1nQQvmYz0Ub04UooYo6JLZux7OaVwYeolWDf9L7RhpaqyWX80lOczSIt19/9mNKZq1hNYRcJBXWOArI36ug==}
+    peerDependencies:
+      astro: ^2.0.0
+    dependencies:
+      astro: 2.0.14
+    dev: false
+
+  /astro-seo-schema/2.0.0_astro@2.0.14:
+    resolution: {integrity: sha512-VMsoQr/v4VN3wLiVm4czfabQlQOKOVim45rwcYWVTuLZuksnE848F1GqejqSaUrCqVrUd8n31p6gLgS2yghw3A==}
+    peerDependencies:
+      astro: ^2.0.0
+    dependencies:
+      astro: 2.0.14
+      schema-dts: 1.1.2
+    transitivePeerDependencies:
+      - typescript
     dev: false
 
   /astro/2.0.14:
@@ -3850,6 +3867,12 @@ packages:
 
   /sax/1.2.4:
     resolution: {integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==}
+    dev: false
+
+  /schema-dts/1.1.2:
+    resolution: {integrity: sha512-MpNwH0dZJHinVxk9bT8XUdjKTxMYrA5bLtrrGmFA6PTLwlOKnhi67XoRd6/ty+Djt6ZC0slR57qFhZDNMI6DhQ==}
+    peerDependencies:
+      typescript: '>=4.1.0'
     dev: false
 
   /section-matter/1.0.0:

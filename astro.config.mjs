@@ -17,6 +17,7 @@ import solidJs from "@astrojs/solid-js";
 
 // https://astro.build/config
 export default defineConfig({
+    site: "https://djrafaelo.pl",
     integrations: [astroImageTools, tailwind(), sitemap(), robotsTxt(), solidJs()],
     vite: {
         server: {

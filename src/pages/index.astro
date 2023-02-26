@@ -5,6 +5,8 @@ import "@fontsource/dm-serif-text";
 
 import "../global.css";
 
+import { Seo } from "astro-seo-meta";
+
 import Logo from "../components/Logo.astro";
 import Image from "../components/Image.astro";
 import Disks from "../components/Disks.astro";
@@ -12,68 +14,60 @@ import Contact from "../components/Contact.astro";
 
 import Reviews from "../components/Reviews.jsx";
 
-const options: Array<string> = ["oferta", "opinie", "kontakt"];
-
-type ImageType = {
-    name: string;
-    alt: string;
-};
-
-const reviewImages: Array<ImageType> = [
-    {
-        name: "BK9A9150.jpg",
-        alt: "Grupa ludzi bawiących się pod kolorową płachtą",
-    },
-    { name: "BK9A9157.jpg", alt: "" },
-    { name: "BK9A9021.jpg", alt: "" },
-    { name: "BK9A9025.jpg", alt: "" },
-];
-
-type Review = {
-    stars: number;
-    content: string;
-    name: string;
-};
-
-const reviews: Array<Review> = [
-    {
-        stars: 5,
-        content:
-            "Serdecznie polecam. Mnóstwo różnych zabaw, atrakcji, animacji. Znajda się zabawy dla każdego. Nagłośnienie oraz oświetlenie ekstraklasa. Nie mogliśmy trafić na lepszego",
-        name: "Jakub Suszyński",
-    },
-    {
-        stars: 5,
-        content:
-            "Rafał - super dj, potrafi porwać do zabawy wszystkich, od najstarszych do najmłodszych zarówno świetną muzyką jak i animacjami, które prowadzi. Chętnie wybrałabym się ponownie na imprezę prowadzoną przez Rafała 🙂 polecam serdecznie",
-        name: "Michalina Kuc",
-    },
-    {
-        stars: 5,
-        content:
-            "Świetny DJ, który wie jak rozruszać towarzystwo. Pełen profesjonalizm, mnóstwo uśmiechu oraz poczucia humoru. Ponadto nieszablonowe zabawy oraz super muzyka. Polecam!!",
-        name: "Ala Pawelczyk",
-    },
-];
+import data from "../../content/data";
 ---
 
 <html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
-        <title>djrafaelo.pl</title>
+        <meta name="generator" content={Astro.generator} />
+
+        <link rel="icon" href="/favicon.svg" />
+
+        <Seo
+            title="DJ/Wodzirej Rafał Łukaszewski • wesela, studniówki, imprezy okolicznościowe • djrafaelo.pl"
+            description="Profesjonalny sprzęt nagłośnieniowy i oświetleniowy. Legalne utwory. Prowadzenie imprez także w języku niemieckim. Zabawy i animacje dla dzieci i dorosłych."
+            icon="/favicon.svg"
+            themeColor="#CA9F54"
+            colorScheme="dark"
+            keywords={[
+                "DJ",
+                "DJ Wordzirej",
+                "wodzirej",
+                "DJ Rafaelo",
+                "Rafał Łukaszewski",
+                "DJ Rafał",
+                "DJ Mrągowo",
+                "DJ niemiecki",
+                "niemiecki",
+                "wodzirej niemiecki",
+                "wesele",
+                "studniówka",
+                "impreza okolicznościowa",
+                "DJ wesele",
+                "DJ studniówka",
+                "DJ impreza okolicznościowa",
+            ]}
+            facebook={{
+                image: "/metaimage.jpg",
+                url: Astro.site ? Astro.site.href : "",
+                type: "website",
+            }}
+            twitter={{ image: "/metaimage.jpg", card: "summary" }}
+        />
     </head>
+
     <body class="bg-dark text-light font-sans">
         <header class="flex justify-between p-5 absolute inset-x-3 top-3">
             <div class="text-xs hidden sm:block">
                 <Contact />
             </div>
-
             <nav
                 class="bg-dark fixed right-3 bottom-3 sm:top-5 sm:bottom-auto z-50 border-2 border-sub sm:border-none list-none text-right m-0 px-5 py-3 rounded-lg shadow-glow shadow-dark"
             >
                 {
-                    options.map((option) => (
+                    data.options.map((option) => (
                         <a
                             href={`#${option}`}
                             class="subtext uppercase link block mb-1 text-base sm:text-xs"
@@ -92,7 +86,6 @@ const reviews: Array<Review> = [
                 <div class="w-4/5 sm:w-2/3 lg:w-1/2 xl:w-2/5">
                     <Logo />
                 </div>
-
                 <div>
                     <h1 class="heading mb-6">
                         Doświadcz niezapomnianej zabawy!
@@ -133,7 +126,6 @@ const reviews: Array<Review> = [
                 class="max-w-4xl mx-auto pt-20 pb-32 lg:pt-40 lg:pb-56 px-6"
             >
                 <h2 class="heading mb-12 md:mb-20 text-sub">Oferta</h2>
-
                 <p class="paragraph">
                     Oferuję usługi muzyczne na
                     <b>wesela, studniówki oraz imprezy okolicznościowe</b>.
@@ -159,7 +151,6 @@ const reviews: Array<Review> = [
                     Dla zainteresowanych, oferuję także prowadzenie imprez
                     <b>w języku niemieckim</b>.
                 </p>
-
                 <a
                     href="#kontakt"
                     class="mt-10 md:mt-16 inline-block px-6 py-2 rounded-full font-bold tracking-wide uppercase text-dark bg-accent shadow-glow transform hover:scale-[1.03] transition-transform ease-out duration-200 origin-bottom"
@@ -176,7 +167,7 @@ const reviews: Array<Review> = [
                     class="parallax-left flex flex-nowrap px-4 gap-5 w-[200vw] md:w-[150vw] xl:w-[130vw]"
                 >
                     {
-                        reviewImages.map((image) => (
+                        data.reviewImages.map((image) => (
                             <Image
                                 name={image.name}
                                 alt={image.alt}
@@ -191,7 +182,7 @@ const reviews: Array<Review> = [
                 <h2 class="heading text-center mb-16 sm:mb-5 text-sub">
                     Co o mnie myślą
                 </h2>
-                <Reviews items={reviews} client:visible />
+                <Reviews items={data.reviews} client:visible />
             </section>
 
             <section
@@ -204,20 +195,17 @@ const reviews: Array<Review> = [
                     class="inset-0 mx-auto w-full basis-full md:w-2/5 md:basis-2/5 h-full"
                     objectPosition="60% 50%"
                 />
-
                 <div
                     class="flex flex-col justify-center w-full basis-full sm:w-4/5 sm:basis-4/5 md:w-3/5 md:basis-3/5"
                 >
                     <div>
                         <h2 class="heading mb-8">Przekonaj się sam!</h2>
-
                         <p class="paragraph">
                             Jeśli szukasz <b>profesjonalnego DJ-a</b> z bogatym
                             <b>doświadczeniem</b>, nie wahaj się i skontaktuj ze
                             mną już dzisiaj!
                         </p>
                     </div>
-
                     <div class="text-lg sm:text-xl lg:text-2xl mt-14 md:mt-24">
                         <Contact />
                     </div>
