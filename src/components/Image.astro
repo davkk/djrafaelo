@@ -16,15 +16,17 @@ const src = import.meta.env.PROD
     : `/src/images/${name}`;
 ---
 
-<Img
-    src={src}
-    alt={alt}
-    loading="lazy"
-    breakpoints={[640, 768, 1024, 1280, 1536, 1920]}
-    attributes={{
-        img: {
-            class: "rounded-xl " + className,
-        },
-    }}
-    {...rest}
-/>
+<div class={className + " inline-block"}>
+    <Img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        breakpoints={[640, 768, 1024, 1280, 1536, 1920]}
+        attributes={{
+            img: {
+                class: "rounded-xl",
+            },
+        }}
+        {...rest}
+    />
+</div>

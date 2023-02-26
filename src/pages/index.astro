@@ -87,7 +87,7 @@ const reviews: Array<Review> = [
             </nav>
         </header>
 
-        <main class="">
+        <main>
             <section
                 class="flex flex-col justify-center items-center gap-14 md:gap-20 xl:gap-28 text-center mx-5 pt-12 py-20 sm:p-0 sm:h-[80svh]"
             >
@@ -107,7 +107,7 @@ const reviews: Array<Review> = [
                 </div>
             </section>
 
-            <section class="px-4">
+            <section class="px-4 overflow-hidden">
                 <div class="relative mb-5 sm:mb-14">
                     <Disks
                         class="absolute top-[50%] right-[5%] h-4/5 z-[-1] transform translate-y-[-50%]"
@@ -115,7 +115,7 @@ const reviews: Array<Review> = [
                     <Image
                         name="BK9A9028.jpg"
                         alt="Zdjęcie grupy bawiących się na imprezie ludzi, prowadzonej przez DJ Rafaelo"
-                        class="w-4/5 md:w-2/3 shadow-glow shadow-dark"
+                        class="parallax-right w-4/5 md:w-2/3"
                     />
                 </div>
                 <div class="relative text-right">
@@ -125,7 +125,7 @@ const reviews: Array<Review> = [
                     <Image
                         name="BK9A9048.jpg"
                         alt=""
-                        class="w-4/5 md:w-2/3 shadow-glow shadow-dark"
+                        class="parallax-left w-4/5 md:w-2/3"
                     />
                 </div>
             </section>
@@ -174,7 +174,7 @@ const reviews: Array<Review> = [
                 id="#opinie"
                 class="bg-gradient-to-b from-[#0E0D0B_50%] to-[#1E1C18_50%] overflow-hidden"
             >
-                <div class="flex flex-nowrap px-4 gap-5 w-[170vw]">
+                <div class="parallax-left flex flex-nowrap px-4 gap-5 w-[200vw] md:w-[150vw] xl:w-[130vw]">
                     {
                         reviewImages.map((image) => (
                             <Image
@@ -235,5 +235,11 @@ const reviews: Array<Review> = [
                 djrafaelo.pl &copy; {new Date().getFullYear()}
             </span>
         </footer>
+
+        <script>
+            import "../scripts/Parallax.jsx"
+        </script>
     </body>
 </html>
+
+
