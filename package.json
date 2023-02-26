@@ -8,24 +8,31 @@
 		"build": "dotnet fable ./src -e jsx && astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"restore": "dotnet restore",
+		"restore": "dotnet restore ./src",
 		"predev": "pnpm restore",
 		"prebuild": "pnpm restore",
 		"postinstall": "pnpm restore"
 	},
 	"dependencies": {
-		"@astrojs/sitemap": "^1.0.1",
+		"@astrojs/sitemap": "^1.1.0",
 		"@astrojs/solid-js": "^2.0.2",
 		"@astrojs/tailwind": "^3.0.1",
 		"@fontsource/dm-serif-text": "^4.5.10",
 		"@fontsource/saira": "^4.5.12",
-		"astro": "^2.0.14",
+		"astro": "^2.0.15",
 		"astro-imagetools": "^0.8.1",
 		"astro-robots-txt": "^0.4.0",
 		"astro-seo-meta": "^2.0.0",
 		"astro-seo-schema": "^2.0.0",
 		"solid-icons": "^1.0.4",
 		"solid-js": "^1.6.11",
-		"tailwindcss": "^3.0.24"
+		"tailwindcss": "^3.2.7"
+	},
+	"devDependencies": {
+		"@astropub/codecs": "^0.4.4",
+		"file-type": "^18.2.1",
+		"find-cache-dir": "^4.0.0",
+		"object-hash": "^3.0.0",
+		"potrace": "^2.1.8"
 	}
 }

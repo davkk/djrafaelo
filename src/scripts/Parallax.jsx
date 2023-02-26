@@ -22,12 +22,10 @@ export function Parallax$reflection() {
 
 export function ParallaxModule_bind(f, x) {
     if (x.tag === 1) {
-        const x_2 = x.fields[0];
-        return f(x_2);
+        return f(x.fields[0]);
     }
     else {
-        const x_1 = x.fields[0];
-        return f(x_1);
+        return f(x.fields[0]);
     }
 }
 
@@ -35,11 +33,7 @@ export function nodeListToList(elements) {
     return map((i) => elements.item(i), toList(rangeDouble(0, 1, elements.length - 1)));
 }
 
-export const parallaxElements = (() => {
-    const left = map((arg) => (new Parallax(0, [arg])), nodeListToList(document.getElementsByClassName("parallax-left")));
-    const right = map((arg_1) => (new Parallax(1, [arg_1])), nodeListToList(document.getElementsByClassName("parallax-right")));
-    return append(left, right);
-})();
+export const parallaxElements = append(map((arg) => (new Parallax(0, [arg])), nodeListToList(document.getElementsByClassName("parallax-left"))), map((arg_1) => (new Parallax(1, [arg_1])), nodeListToList(document.getElementsByClassName("parallax-right"))));
 
 export let throttleTimer = createAtom(false);
 
