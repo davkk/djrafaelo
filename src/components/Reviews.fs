@@ -131,8 +131,7 @@ let Reviews (props: JsonValue) =
                 )
 
             [
-                Attr.className
-                    "relative flex flex-col justify-center items-center gap-5 h-[33vh] max-h-[500px] p-5"
+                Attr.className "relative flex flex-col justify-center items-center gap-5 h-[33vh] max-h-[500px] p-5"
                 Html.children
                     [
                         [
