@@ -45,10 +45,12 @@ export const propsDecoder = (path_1) => ((v) => object((get$) => {
 export function tryDecode(value, decoder, callback) {
     const matchValue = fromValue("$", decoder, value);
     if (matchValue.tag === 1) {
-        throw new Error(`Failed to decode ${"value"}: ${matchValue.fields[0]}`);
+        const err = matchValue.fields[0];
+        throw new Error(`Failed to decode ${"value"}: ${err}`);
     }
     else {
-        return () => callback(matchValue.fields[0]);
+        const decoded = matchValue.fields[0];
+        return () => callback(decoded);
     }
 }
 
@@ -95,14 +97,15 @@ export function Reviews($props) {
             }}>
             <ChevronRight></ChevronRight>
         </button>;
+        const reviews = <For each={props_1.items}>
+            {(review, index) => <Show when={currentReview() === index()}>
+                <Review review={review}></Review>
+            </Show>}
+        </For>;
         return <div class="relative flex flex-col justify-center items-center gap-5 h-[33vh] max-h-[500px] p-5">
             <div class="max-w-[1000px] w-full absolute top-0 sm:top-1/2 left-1/2 flex gap-10 md:gap-32 h-fit transform -translate-x-1/2 sm:-translate-y-1/2 pt-8">
                 {buttonLeft}
-                <For each={props_1.items}>
-                    {(review, index) => <Show when={currentReview() === index()}>
-                        <Review review={review}></Review>
-                    </Show>}
-                </For>
+                {reviews}
                 {buttonRight}
             </div>
         </div>;

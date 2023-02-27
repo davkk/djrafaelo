@@ -3,7 +3,6 @@ module Parallax
 open Browser
 open Browser.Types
 open Fable.Core
-open Fable.Core.JsInterop
 
 
 type Parallax =
@@ -55,57 +54,34 @@ let throttle (time: int) (callback: unit -> unit) =
 document.addEventListener (
     "scroll",
     (fun _ ->
-        let parallaxRate = 0.2
+        let parallaxRate = 0.25
 
         let translationValue (element: HTMLElement) =
-            let parallax =
-                parallaxRate
-                * (window.pageYOffset + window.innerHeight
-                   - element.offsetTop)
+            (parallaxRate
+             * (window.innerHeight / 3.
+                - element.getBoundingClientRect().top))
+            |> max 0
 
-            let offset =
-                parallaxRate
-                * (element.offsetTop - window.innerHeight)
-
-            if offset < 0 then parallax + offset else parallax
 
         let transitionStyle =
-            "transition: all 100ms ease-out"
-
-        let observerOptions =
-            let opts =
-                createEmpty<IntersectionObserverOptions>
-
-            opts.rootMargin <- "20% 0px"
-            opts
+            "transition: all 80ms ease-out"
 
         (fun () ->
             parallaxElements
             |> List.iter (fun element ->
-                let rec observer =
-                    IntersectionObserver.Create(
-                        (fun entries _ ->
-                            entries
-                            |> Array.iter (fun entry ->
-                                if entry.isIntersecting then
-                                    match element with
-                                    | Left element ->
-                                        element.setAttribute (
-                                            "style",
-                                            $"transform: translateX(-{translationValue element}px); {transitionStyle}"
-                                        )
-                                    | Right element ->
-                                        element.setAttribute (
-                                            "style",
-                                            $"transform: translateX({translationValue element}px); {transitionStyle}"
-                                        )
-                            )
-                        ),
-                        observerOptions
-                    )
+                match element with
+                | Left element ->
+                    console.log (translationValue element)
 
-                element
-                |> Parallax.bind observer.observe
+                    element.setAttribute (
+                        "style",
+                        $"transform: translateX(-{translationValue element}px); {transitionStyle}"
+                    )
+                | Right element ->
+                    element.setAttribute (
+                        "style",
+                        $"transform: translateX({translationValue element}px); {transitionStyle}"
+                    )
             )
         )
         |> throttle 10
