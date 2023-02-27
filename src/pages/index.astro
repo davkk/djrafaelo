@@ -24,6 +24,7 @@ import data from "../../content/data";
         <meta name="generator" content={Astro.generator} />
 
         <link rel="icon" href="/favicon.svg" />
+        <script src="../scripts/Parallax.jsx"></script>
 
         <Seo
             title="DJ/Wodzirej Rafał Łukaszewski • wesela, studniówki, imprezy okolicznościowe • djrafaelo.pl"
@@ -212,7 +213,9 @@ import data from "../../content/data";
             </section>
         </main>
 
-        <footer class="flex sm:justify-between items-center gap-16 p-5 md:p-10 pb-24 sm:pb-5">
+        <footer
+            class="flex sm:justify-between items-center gap-16 p-5 md:p-10 pb-24 sm:pb-5"
+        >
             <div class="w-36 md:w-48">
                 <Logo />
             </div>
@@ -220,9 +223,5 @@ import data from "../../content/data";
                 djrafaelo.pl &copy; {new Date().getFullYear()}
             </span>
         </footer>
-
-        <script>
-            import "../scripts/Parallax.jsx";
-        </script>
     </body>
 </html>
