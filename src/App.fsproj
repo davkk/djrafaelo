@@ -3,7 +3,9 @@
         <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
+        <Compile Include="scripts/Throttle.fs" />
         <Compile Include="scripts/Parallax.fs" />
+        <Compile Include="scripts/Dragging.fs" />
         <Compile Include="components/Icons.fs" />
         <Compile Include="components/Reviews.fs" />
     </ItemGroup>

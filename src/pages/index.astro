@@ -24,7 +24,6 @@ import data from "../../content/data";
         <meta name="generator" content={Astro.generator} />
 
         <link rel="icon" href="/favicon.svg" />
-        <script src="../scripts/Parallax.jsx"></script>
 
         <Seo
             title="DJ/Wodzirej Rafał Łukaszewski • wesela, studniówki, imprezy okolicznościowe • djrafaelo.pl"
@@ -107,7 +106,7 @@ import data from "../../content/data";
                     <Image
                         name="BK9A9028.jpg"
                         alt="Zdjęcie grupy bawiących się na imprezie ludzi, prowadzonej przez DJ Rafaelo"
-                        class="parallax-right w-4/5 md:w-2/3"
+                        class="parallax-right transition-all ease-out duration-75 will-change-transform w-4/5 md:w-2/3"
                     />
                 </div>
                 <div class="relative text-right">
@@ -117,7 +116,7 @@ import data from "../../content/data";
                     <Image
                         name="BK9A9048.jpg"
                         alt=""
-                        class="parallax-left w-4/5 md:w-2/3"
+                        class="parallax-left transition-all ease-out duration-75 will-change-transform w-4/5 md:w-2/3"
                     />
                 </div>
             </section>
@@ -161,24 +160,26 @@ import data from "../../content/data";
             </section>
 
             <section
-                class="bg-gradient-to-b from-[#0E0D0B_50%] to-[#1E1C18_50%] overflow-hidden"
+                id="slider"
+                class="cursor-grab bg-gradient-to-b from-[#0E0D0B_50%] to-[#1E1C18_50%] overflow-hidden"
             >
                 <div
-                    class="parallax-left flex flex-nowrap px-4 gap-5 w-[200vw] md:w-[150vw] xl:w-[110vw]"
+                    id="slider-rails"
+                    class="px-4 flex flex-nowrap gap-5 w-[270vw] md:w-[190vw] xl:w-[160vw] select-none transition-all ease-out duration-75"
                 >
                     {
                         data.reviewImages.map((image) => (
                             <Image
                                 name={image.name}
                                 alt={image.alt}
-                                class="flex-grow w-[25vw] basis-[25vw]"
+                                class="flex-grow w-[25vw] basis-[25vw] pointer-events-none"
                             />
                         ))
                     }
                 </div>
             </section>
 
-            <section id="opinie" class="bg-mute px-5 py-32">
+            <section id="opinie" class="bg-mute px-5 py-20 md:py-32">
                 <h2 class="heading text-center mb-16 sm:mb-5 text-sub">
                     Co o mnie myślą
                 </h2>
@@ -223,5 +224,8 @@ import data from "../../content/data";
                 djrafaelo.pl &copy; {new Date().getFullYear()}
             </span>
         </footer>
+
+        <script src="../scripts/Parallax.jsx"></script>
+        <script src="../scripts/Dragging.jsx"></script>
     </body>
 </html>

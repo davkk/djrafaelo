@@ -2,8 +2,6 @@ module Parallax
 
 open Browser
 open Browser.Types
-open Fable.Core
-
 
 type Parallax =
     | Left of element: HTMLElement
@@ -32,56 +30,47 @@ let parallaxElements =
 
     left @ right
 
-let mutable throttleTimer = false
-
-let throttle (time: int) (callback: unit -> unit) =
-    if throttleTimer then
-        ()
-
-    throttleTimer <- true
-
-    let _ =
-        JS.setTimeout
-            (fun () ->
-                callback ()
-                throttleTimer <- false
-            )
-            time
-
-    ()
-
-
 document.addEventListener (
     "scroll",
     (fun _ ->
-        let parallaxRate = 0.25
-
-        let translationValue (element: HTMLElement) =
-            (parallaxRate
-             * (window.innerHeight / 3.
-                - element.getBoundingClientRect().top))
-            |> max 0
-
-
-        let transitionStyle =
-            "transition: all 80ms ease-out"
-
         (fun () ->
+            let parallaxRate = 0.2
+
+            let translationValue (element: HTMLElement) =
+                let initialElementTop =
+                    element.getBoundingClientRect().top
+                    + window.pageYOffset
+
+                let triggerHeight =
+                    2. * window.innerHeight / 3.
+
+                let translate =
+                    (triggerHeight
+                     - element.getBoundingClientRect().top)
+                    |> max 0
+
+                parallaxRate
+                * (if initialElementTop < triggerHeight then
+                       translate
+                       + (initialElementTop - triggerHeight)
+                   else
+                       translate)
+
             parallaxElements
             |> List.iter (fun element ->
                 match element with
                 | Left element ->
                     element.setAttribute (
                         "style",
-                        $"transform: translateX(-{translationValue element}px); {transitionStyle}"
+                        $"transform: translateX(-{translationValue element}px)"
                     )
                 | Right element ->
                     element.setAttribute (
                         "style",
-                        $"transform: translateX({translationValue element}px); {transitionStyle}"
+                        $"transform: translateX({translationValue element}px)"
                     )
             )
         )
-        |> throttle 10
+        |> Throttle.throttle 20
     )
 )
