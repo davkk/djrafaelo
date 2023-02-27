@@ -71,8 +71,6 @@ document.addEventListener (
             |> List.iter (fun element ->
                 match element with
                 | Left element ->
-                    console.log (translationValue element)
-
                     element.setAttribute (
                         "style",
                         $"transform: translateX(-{translationValue element}px); {transitionStyle}"

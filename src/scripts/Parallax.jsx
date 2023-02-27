@@ -4,7 +4,6 @@ import { iterate, append, map } from "../fable_modules/fable-library.4.0.0-theta
 import { toList } from "../fable_modules/fable-library.4.0.0-theta-018/Seq.js";
 import { rangeDouble } from "../fable_modules/fable-library.4.0.0-theta-018/Range.js";
 import { comparePrimitives, max, createAtom } from "../fable_modules/fable-library.4.0.0-theta-018/Util.js";
-import { some } from "../fable_modules/fable-library.4.0.0-theta-018/Option.js";
 
 export class Parallax extends Union {
     constructor(tag, fields) {
@@ -66,7 +65,6 @@ document.addEventListener("scroll", (_arg) => {
             }
             else {
                 const element_2 = element_1.fields[0];
-                console.log(some(translationValue(element_2)));
                 element_2.setAttribute("style", `transform: translateX(-${translationValue(element_2)}px); ${transitionStyle}`);
             }
         }, parallaxElements);
