@@ -64,13 +64,13 @@ import data from "../../content/data";
                 <Contact />
             </div>
             <nav
-                class="bg-dark fixed right-3 bottom-3 sm:top-5 sm:bottom-auto z-50 border-2 border-sub sm:border-none list-none text-right m-0 px-5 py-3 rounded-lg shadow-glow shadow-dark"
+                class="flex justify-evenly gap-5 sm:gap-1 sm:flex-col bg-dark fixed inset-x-3 sm:left-auto sm:right-3 bottom-3 sm:top-5 sm:bottom-auto z-50 border-2 border-sub sm:border-none list-none text-right m-0 px-5 py-3 rounded-lg shadow-glow shadow-dark"
             >
                 {
                     data.options.map((option) => (
                         <a
                             href={`#${option}`}
-                            class="subtext uppercase link block mb-1 text-base sm:text-xs"
+                            class="subtext uppercase link block text-base sm:text-xs"
                         >
                             {option}
                         </a>
@@ -212,7 +212,7 @@ import data from "../../content/data";
             </section>
         </main>
 
-        <footer class="flex sm:justify-between items-center gap-16 p-5 md:p-10">
+        <footer class="flex sm:justify-between items-center gap-16 p-5 md:p-10 pb-24 sm:pb-5">
             <div class="w-36 md:w-48">
                 <Logo />
             </div>
