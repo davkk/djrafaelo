@@ -1,3 +1,7 @@
+html {
+    @apply scroll-smooth motion-reduce:scroll-auto
+}
+
 .heading {
     @apply font-serif tracking-wide leading-tight text-4xl sm:text-5xl md:text-6xl xl:text-7xl
 }
