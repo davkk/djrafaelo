@@ -14,22 +14,34 @@ export function setCursor(value) {
     sliderContainer.setAttribute("style", `cursor: ${value}`);
 }
 
-export function dragStart(ev) {
-    pressed(true);
-    initX(ev.pageX - rails.getBoundingClientRect().left);
-    setCursor("grabbing");
-}
-
 export function setTranslate(value) {
     rails.setAttribute("style", `transform: translateX(${value}px)`);
+}
+
+export function dragStart(ev) {
+    pressed(true);
+    const railsLeft = rails.getBoundingClientRect().left;
+    const matchValue = ev.type;
+    if (matchValue === "mousedown") {
+        initX(ev.pageX - railsLeft);
+    }
+    else if (matchValue === "touchstart") {
+        initX(ev.touches[0].pageX - railsLeft);
+    }
+    setCursor("grabbing");
 }
 
 export function dragMove(ev) {
     if (!pressed()) {
     }
     else {
-        ev.preventDefault();
-        currX(ev.pageX);
+        const matchValue = ev.type;
+        if (matchValue === "mousemove") {
+            currX(ev.pageX);
+        }
+        else if (matchValue === "touchmove") {
+            currX(ev.touches[0].pageX);
+        }
         const deltaX = currX() - initX();
         const railsRect = rails.getBoundingClientRect();
         const sliderRect = sliderContainer.getBoundingClientRect();
@@ -39,7 +51,7 @@ export function dragMove(ev) {
     }
 }
 
-export function dragEnd(_arg) {
+export function dragEnd(ev) {
     pressed(false);
     setCursor("grab");
 }
@@ -48,15 +60,31 @@ sliderContainer.addEventListener("mousedown", (ev) => {
     dragStart(ev);
 });
 
+sliderContainer.addEventListener("touchstart", (ev) => {
+    dragStart(ev);
+});
+
 sliderContainer.addEventListener("mousemove", (ev) => {
     dragMove(ev);
 });
 
-sliderContainer.addEventListener("mouseup", (arg00$0040) => {
-    dragEnd(arg00$0040);
+sliderContainer.addEventListener("touchmove", (ev) => {
+    dragMove(ev);
 });
 
-sliderContainer.addEventListener("mouseleave", (arg00$0040) => {
-    dragEnd(arg00$0040);
+sliderContainer.addEventListener("mouseup", (ev) => {
+    dragEnd(ev);
+});
+
+sliderContainer.addEventListener("touchend", (ev) => {
+    dragEnd(ev);
+});
+
+sliderContainer.addEventListener("mouseleave", (ev) => {
+    dragEnd(ev);
+});
+
+sliderContainer.addEventListener("touchcancel", (ev) => {
+    dragEnd(ev);
 });
 
