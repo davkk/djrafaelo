@@ -9,6 +9,9 @@ let sliderContainer =
 let rails =
     document.getElementById "slider-rails"
 
+let arrow =
+    document.getElementById "slider-arrow"
+
 let mutable initX = 0.0
 let mutable currX = 0.0
 let mutable pressed = false
@@ -60,6 +63,11 @@ let dragMove (ev: Event) =
             max maxDragX (min 0 deltaX)
 
         setTranslate (newTranslate)
+
+        if railsRect.left < 0 then
+            arrow.setAttribute("style", "opacity: 0")
+        else
+            arrow.setAttribute("style", "opacity: 1")
 
 let dragEnd (ev: Event) =
     pressed <- false

@@ -4,6 +4,8 @@ export const sliderContainer = document.getElementById("slider");
 
 export const rails = document.getElementById("slider-rails");
 
+export const arrow = document.getElementById("slider-arrow");
+
 export let initX = createAtom(0);
 
 export let currX = createAtom(0);
@@ -48,6 +50,12 @@ export function dragMove(ev) {
         const maxDragX = sliderRect.width - railsRect.width;
         const newTranslate = max(comparePrimitives, maxDragX, min(comparePrimitives, 0, deltaX));
         setTranslate(newTranslate);
+        if (railsRect.left < 0) {
+            arrow.setAttribute("style", "opacity: 0");
+        }
+        else {
+            arrow.setAttribute("style", "opacity: 1");
+        }
     }
 }
 

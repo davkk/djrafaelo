@@ -9,6 +9,7 @@ import Contact from "../components/Contact.astro";
 import Reviews from "../components/Reviews.jsx";
 
 import data from "../../content/data";
+import { BsChevronDoubleRight } from "solid-icons/bs";
 ---
 
 <Layout class="bg-dark text-light font-sans">
@@ -108,7 +109,7 @@ import data from "../../content/data";
 
         <section
             id="slider"
-            class="cursor-grab bg-gradient-to-b from-[#0E0D0B_50%] to-[#1E1C18_50%] overflow-hidden"
+            class="relative cursor-grab bg-gradient-to-b from-[#0E0D0B_50%] to-[#1E1C18_50%] overflow-hidden"
         >
             <div
                 id="slider-rails"
@@ -123,6 +124,12 @@ import data from "../../content/data";
                         />
                     ))
                 }
+            </div>
+            <div
+                id="slider-arrow"
+                class="transition-opacity duration-150 pointer-events-none absolute z-40 inset-y-0 right-0 w-1/6 bg-gradient-to-l from-dark to-transparent"
+            >
+                <BsChevronDoubleRight class="text-2xl text-light absolute top-1/2 right-4 transform -translate-y-1/2 animate-bounce-right" />
             </div>
         </section>
 

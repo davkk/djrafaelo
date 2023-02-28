@@ -43,10 +43,19 @@ module.exports = {
                         transform: "translateX(0) scale(1)",
                         opactiy: 1,
                     },
+                },
+                "bounce-right": {
+                    "0%": {
+                        transform: "translate3d(0, -50%, 0) scale(1)",
+                    },
+                    "100%": {
+                        transform: "translate3d(20%, -50%, 0) scale(1.01)",
+                    },
                 }
             },
             animation: {
                 "slide-up": "slide-up 200ms ease-out forwards",
+                "bounce-right": "bounce-right 500ms ease-in-out infinite alternate"
             }
         },
     },
