@@ -2,6 +2,9 @@
 module.exports = {
     content: ["./src/**/*.{astro,html,js,jsx,fs,fs.js}"],
     theme: {
+        breakpoints: {
+            sm: "560px"
+        },
         fontSize: {
             xs: "0.75rem",
             sm: "0.875rem",
