@@ -33,44 +33,41 @@ let parallaxElements =
 document.addEventListener (
     "scroll",
     (fun _ ->
-        (fun () ->
-            let parallaxRate = 0.2
+        let parallaxRate = 0.2
 
-            let translationValue (element: HTMLElement) =
-                let initialElementTop =
-                    element.getBoundingClientRect().top
-                    + window.pageYOffset
+        let translationValue (element: HTMLElement) =
+            let initialElementTop =
+                element.getBoundingClientRect().top
+                + window.pageYOffset
 
-                let triggerHeight =
-                    2. * window.innerHeight / 3.
+            let triggerHeight =
+                2. * window.innerHeight / 3.
 
-                let translate =
-                    (triggerHeight
-                     - element.getBoundingClientRect().top)
-                    |> max 0
+            let translate =
+                (triggerHeight
+                 - element.getBoundingClientRect().top)
+                |> max 0
 
-                parallaxRate
-                * (if initialElementTop < triggerHeight then
-                       translate
-                       + (initialElementTop - triggerHeight)
-                   else
-                       translate)
+            parallaxRate
+            * (if initialElementTop < triggerHeight then
+                   translate
+                   + (initialElementTop - triggerHeight)
+               else
+                   translate)
 
-            parallaxElements
-            |> List.iter (fun element ->
-                match element with
-                | Left element ->
-                    element.setAttribute (
-                        "style",
-                        $"transform: translateX(-{translationValue element}px)"
-                    )
-                | Right element ->
-                    element.setAttribute (
-                        "style",
-                        $"transform: translateX({translationValue element}px)"
-                    )
-            )
+        parallaxElements
+        |> List.iter (fun element ->
+            match element with
+            | Left element ->
+                element.setAttribute (
+                    "style",
+                    $"transform: translateX(-{translationValue element}px)"
+                )
+            | Right element ->
+                element.setAttribute (
+                    "style",
+                    $"transform: translateX({translationValue element}px)"
+                )
         )
-        |> Throttle.throttle 20
     )
 )

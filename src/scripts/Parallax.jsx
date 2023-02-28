@@ -3,7 +3,6 @@ import { union_type, class_type } from "../fable_modules/fable-library.4.0.0-the
 import { iterate, append, map } from "../fable_modules/fable-library.4.0.0-theta-018/List.js";
 import { toList } from "../fable_modules/fable-library.4.0.0-theta-018/Seq.js";
 import { rangeDouble } from "../fable_modules/fable-library.4.0.0-theta-018/Range.js";
-import { throttle } from "./Throttle.jsx";
 import { comparePrimitives, max } from "../fable_modules/fable-library.4.0.0-theta-018/Util.js";
 
 export class Parallax extends Union {
@@ -43,24 +42,22 @@ export const parallaxElements = (() => {
 })();
 
 document.addEventListener("scroll", (_arg) => {
-    throttle(20, () => {
-        const parallaxRate = 0.2;
-        const translationValue = (element) => {
-            const initialElementTop = element.getBoundingClientRect().top + window.pageYOffset;
-            const triggerHeight = (2 * window.innerHeight) / 3;
-            const translate = max(comparePrimitives, 0, triggerHeight - element.getBoundingClientRect().top);
-            return parallaxRate * ((initialElementTop < triggerHeight) ? (translate + (initialElementTop - triggerHeight)) : translate);
-        };
-        iterate((element_1) => {
-            if (element_1.tag === 1) {
-                const element_3 = element_1.fields[0];
-                element_3.setAttribute("style", `transform: translateX(${translationValue(element_3)}px)`);
-            }
-            else {
-                const element_2 = element_1.fields[0];
-                element_2.setAttribute("style", `transform: translateX(-${translationValue(element_2)}px)`);
-            }
-        }, parallaxElements);
-    });
+    const parallaxRate = 0.2;
+    const translationValue = (element) => {
+        const initialElementTop = element.getBoundingClientRect().top + window.pageYOffset;
+        const triggerHeight = (2 * window.innerHeight) / 3;
+        const translate = max(comparePrimitives, 0, triggerHeight - element.getBoundingClientRect().top);
+        return parallaxRate * ((initialElementTop < triggerHeight) ? (translate + (initialElementTop - triggerHeight)) : translate);
+    };
+    iterate((element_1) => {
+        if (element_1.tag === 1) {
+            const element_3 = element_1.fields[0];
+            element_3.setAttribute("style", `transform: translateX(${translationValue(element_3)}px)`);
+        }
+        else {
+            const element_2 = element_1.fields[0];
+            element_2.setAttribute("style", `transform: translateX(-${translationValue(element_2)}px)`);
+        }
+    }, parallaxElements);
 });
 
