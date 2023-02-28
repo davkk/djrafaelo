@@ -1,4 +1,5 @@
 [[redirects]]
 from = "https://djrafaelo.netlify.app/*"
 to = "https://djrafaelo.pl/:splat"
-status = 301
+status = 200
+force = true
