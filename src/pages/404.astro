@@ -1,0 +1,22 @@
+---
+import { AiOutlineRollback } from "solid-icons/ai";
+import Logo from "../components/Logo.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+    <div
+        class="w-screen h-screen flex flex-col justify-center items-center gap-16"
+    >
+        <div class="w-72">
+            <Logo />
+        </div>
+        <div class="flex flex-col justify-center items-center">
+            <h1 class="heading text-accent">404</h1>
+            <p class="paragraph !mb-0">Nie znaleziono takiej strony!</p>
+        </div>
+        <a href="/" class="subtext hover:underline underline-offset-2 text-lg">
+            Powrót na stronę główną <AiOutlineRollback class="inline" />
+        </a>
+    </div>
+</Layout>
