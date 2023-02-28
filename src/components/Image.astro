@@ -16,7 +16,7 @@ const src = import.meta.env.PROD
     : `/src/images/${name}`;
 ---
 
-<div class={className + " inline-block"}>
+<div class={className + " inline-block relative"}>
     <Img
         src={src}
         alt={alt}
@@ -24,7 +24,7 @@ const src = import.meta.env.PROD
         breakpoints={[640, 768, 1024, 1280, 1536, 1920]}
         attributes={{
             img: {
-                class: "rounded-xl",
+                class: "rounded-xl !h-full",
             },
         }}
         {...rest}
