@@ -1,0 +1,55 @@
+---
+import "@fontsource/saira/300.css";
+import "@fontsource/saira/400.css";
+import "@fontsource/dm-serif-text";
+
+import "../global.css";
+
+import { Seo } from "astro-seo-meta";
+---
+
+<html lang="pl">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+
+        <link rel="icon" href="/favicon.svg" />
+
+        <Seo
+            title="DJ/Wodzirej Rafał Łukaszewski • wesela, studniówki, imprezy okolicznościowe • djrafaelo.pl"
+            description="Profesjonalny sprzęt nagłośnieniowy i oświetleniowy. Legalne utwory. Prowadzenie imprez także w języku niemieckim. Zabawy i animacje dla dzieci i dorosłych."
+            icon="/favicon.svg"
+            themeColor="#CA9F54"
+            colorScheme="dark"
+            keywords={[
+                "DJ",
+                "DJ Wordzirej",
+                "wodzirej",
+                "DJ Rafaelo",
+                "Rafał Łukaszewski",
+                "DJ Rafał",
+                "DJ Mrągowo",
+                "DJ niemiecki",
+                "niemiecki",
+                "wodzirej niemiecki",
+                "wesele",
+                "studniówka",
+                "impreza okolicznościowa",
+                "DJ wesele",
+                "DJ studniówka",
+                "DJ impreza okolicznościowa",
+            ]}
+            facebook={{
+                image: "/metaimage.jpg",
+                url: Astro.site ? Astro.site.href : "",
+                type: "website",
+            }}
+            twitter={{ image: "/metaimage.jpg", card: "summary" }}
+        />
+    </head>
+
+    <body class="bg-dark text-light font-sans">
+        <slot />
+    </body>
+</html>

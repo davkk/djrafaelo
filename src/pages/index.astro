@@ -1,11 +1,5 @@
 ---
-import "@fontsource/saira/300.css";
-import "@fontsource/saira/400.css";
-import "@fontsource/dm-serif-text";
-
-import "../global.css";
-
-import { Seo } from "astro-seo-meta";
+import Layout from "../layouts/Layout.astro";
 
 import Logo from "../components/Logo.astro";
 import Image from "../components/Image.astro";
@@ -17,215 +11,167 @@ import Reviews from "../components/Reviews.jsx";
 import data from "../../content/data";
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-
-        <link rel="icon" href="/favicon.svg" />
-
-        <Seo
-            title="DJ/Wodzirej Rafał Łukaszewski • wesela, studniówki, imprezy okolicznościowe • djrafaelo.pl"
-            description="Profesjonalny sprzęt nagłośnieniowy i oświetleniowy. Legalne utwory. Prowadzenie imprez także w języku niemieckim. Zabawy i animacje dla dzieci i dorosłych."
-            icon="/favicon.svg"
-            themeColor="#CA9F54"
-            colorScheme="dark"
-            keywords={[
-                "DJ",
-                "DJ Wordzirej",
-                "wodzirej",
-                "DJ Rafaelo",
-                "Rafał Łukaszewski",
-                "DJ Rafał",
-                "DJ Mrągowo",
-                "DJ niemiecki",
-                "niemiecki",
-                "wodzirej niemiecki",
-                "wesele",
-                "studniówka",
-                "impreza okolicznościowa",
-                "DJ wesele",
-                "DJ studniówka",
-                "DJ impreza okolicznościowa",
-            ]}
-            facebook={{
-                image: "/metaimage.jpg",
-                url: Astro.site ? Astro.site.href : "",
-                type: "website",
-            }}
-            twitter={{ image: "/metaimage.jpg", card: "summary" }}
-        />
-    </head>
-
-    <body class="bg-dark text-light font-sans">
-        <header class="flex justify-between p-5 absolute inset-x-3 top-3">
-            <div class="text-xs hidden sm:block">
-                <Contact />
-            </div>
-            <nav
-                class="flex justify-evenly gap-5 sm:gap-1 sm:flex-col bg-dark fixed inset-x-3 sm:left-auto sm:right-3 bottom-3 sm:top-5 sm:bottom-auto z-50 border-2 border-sub sm:border-none list-none text-right m-0 px-5 py-3 rounded-lg shadow-glow shadow-dark"
-            >
-                {
-                    data.options.map((option) => (
-                        <a
-                            href={`#${option}`}
-                            class="subtext uppercase link block text-base sm:text-xs"
-                        >
-                            {option}
-                        </a>
-                    ))
-                }
-            </nav>
-        </header>
-
-        <main>
-            <section
-                class="flex flex-col justify-center items-center gap-14 md:gap-20 xl:gap-28 text-center mx-8 pt-12 py-20 sm:p-0 sm:h-[90svh]"
-            >
-                <div class="w-4/5 sm:w-2/3 lg:w-1/2 xl:w-2/5">
-                    <Logo />
-                </div>
-                <div>
-                    <h1 class="heading mb-6">
-                        Doświadcz niezapomnianej zabawy!
-                    </h1>
-                    <h3
-                        class="subtext text-sm md:text-lg lg:text-xl xl:text-2xl"
-                    >
-                        wesela • studniówki • imprezy okolicznościowe
-                    </h3>
-                </div>
-            </section>
-
-            <section class="px-4 overflow-hidden">
-                <div class="relative mb-5 sm:mb-14">
-                    <Disks
-                        class="absolute top-[50%] right-[5%] h-4/5 z-[-1] transform translate-y-[-50%]"
-                    />
-                    <Image
-                        name="BK9A9028.jpg"
-                        alt="Zdjęcie grupy bawiących się na imprezie ludzi, prowadzonej przez DJ Rafaelo"
-                        class="parallax-right transition-all ease-out duration-75 will-change-transform w-4/5 md:w-2/3"
-                    />
-                </div>
-                <div class="relative text-right">
-                    <Disks
-                        class="absolute top-[50%] left-[5%] h-4/5 z-[-1] transform translate-y-[-50%]"
-                    />
-                    <Image
-                        name="BK9A9048.jpg"
-                        alt=""
-                        class="parallax-left transition-all ease-out duration-75 will-change-transform w-4/5 md:w-2/3"
-                    />
-                </div>
-            </section>
-
-            <section
-                id="oferta"
-                class="max-w-4xl mx-auto pt-20 pb-32 lg:pt-40 lg:pb-56 px-6"
-            >
-                <h2 class="heading mb-12 md:mb-20 text-sub">Oferta</h2>
-                <p class="paragraph">
-                    Oferuję usługi muzyczne na
-                    <b>wesela, studniówki oraz imprezy okolicznościowe</b>.
-                </p>
-                <p class="paragraph">
-                    Muzyka i animacje taneczne to <b>moja pasja</b>, dlatego
-                    najlepszą premią za moją pracę jest <b>uśmiech gości</b>.
-                </p>
-                <p class="paragraph">
-                    Dysponuję
-                    <b
-                        >profesjonalnym sprzętem nagłaśniającym oraz
-                        oświetleniowym</b
-                    >, co pozwala na doskonałą jakość dźwięku i stworzenie
-                    nastrojowej atmosfery.
-                </p>
-                <p class="paragraph">
-                    Gram legalne utwory, a moje animacje zapewniają wspaniałą
-                    zabawę, zarówno dla
-                    <b>dorosłych, jak i dzieci</b>.
-                </p>
-                <p class="paragraph mb-20">
-                    Dla zainteresowanych, oferuję także prowadzenie imprez
-                    <b>w języku niemieckim</b>.
-                </p>
-                <a
-                    href="#kontakt"
-                    class="mt-10 md:mt-16 inline-block px-6 py-2 rounded-full font-bold tracking-wide uppercase text-dark bg-accent shadow-glow transform hover:scale-[1.03] transition-transform ease-out duration-200 origin-bottom"
-                >
-                    Zadzwoń teraz →
-                </a>
-            </section>
-
-            <section
-                id="slider"
-                class="cursor-grab bg-gradient-to-b from-[#0E0D0B_50%] to-[#1E1C18_50%] overflow-hidden"
-            >
-                <div
-                    id="slider-rails"
-                    class="px-4 flex flex-nowrap gap-5 w-[320vw] md:w-[270vw] xl:w-[160vw] select-none transition-all ease-out duration-75"
-                >
-                    {
-                        data.reviewImages.map((image) => (
-                            <Image
-                                name={image.name}
-                                alt={image.alt}
-                                class="flex-grow w-[25vw] basis-[25vw] pointer-events-none"
-                            />
-                        ))
-                    }
-                </div>
-            </section>
-
-            <section id="opinie" class="bg-mute px-5 py-20 md:py-32">
-                <h2 class="heading text-center mb-16 sm:mb-5 text-sub">
-                    Co o mnie myślą
-                </h2>
-                <Reviews items={data.reviews} client:visible />
-            </section>
-
-            <section
-                id="kontakt"
-                class="flex justify-center md:items-stretch flex-col md:flex-row px-8 lg:px-20 py-20 lg:py-32 gap-14 lg:gap-20 xl:gap-40"
-            >
-                <Image
-                    name="contact-image.jpg"
-                    alt="TODO:"
-                    class="mx-auto w-full basis-full md:w-2/5 md:basis-2/5 order-2 md:order-1"
-                    objectPosition="60% 50%"
-                />
-                <div
-                    class="flex flex-col justify-center w-full basis-full sm:w-4/5 sm:basis-4/5 md:w-3/5 md:basis-3/5 order-1 md:order-2"
-                >
-                    <div>
-                        <h2 class="heading mb-8">Przekonaj się sam!</h2>
-                        <p class="paragraph">
-                            Jeśli szukasz <b>profesjonalnego DJ-a</b> z bogatym
-                            <b>doświadczeniem</b>, nie wahaj się i skontaktuj ze
-                            mną już dzisiaj!
-                        </p>
-                    </div>
-                    <div class="text-lg sm:text-xl lg:text-2xl mt-14 md:mt-24">
-                        <Contact />
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer
-            class="flex sm:justify-between items-center gap-16 p-5 md:p-10 pb-24 sm:pb-5"
+<Layout class="bg-dark text-light font-sans">
+    <header class="flex justify-between p-5 absolute inset-x-3 top-3">
+        <div class="text-xs hidden sm:block">
+            <Contact />
+        </div>
+        <nav
+            class="flex justify-evenly gap-5 sm:gap-1 sm:flex-col bg-dark fixed inset-x-3 sm:left-auto sm:right-3 bottom-3 sm:top-5 sm:bottom-auto z-50 border-2 border-sub sm:border-none list-none text-right m-0 px-5 py-3 rounded-lg shadow-glow shadow-dark"
         >
-            <div class="w-36 md:w-48">
+            {
+                data.options.map((option) => (
+                    <a
+                        href={`#${option}`}
+                        class="subtext uppercase link block text-base sm:text-xs"
+                    >
+                        {option}
+                    </a>
+                ))
+            }
+        </nav>
+    </header>
+
+    <main>
+        <section
+            class="flex flex-col justify-center items-center gap-14 md:gap-20 xl:gap-28 text-center mx-8 pt-12 py-20 sm:p-0 sm:h-[90svh]"
+        >
+            <div class="w-4/5 sm:w-2/3 lg:w-1/2 xl:w-2/5">
                 <Logo />
             </div>
-            <span class="text-sub text-xs">
-                djrafaelo.pl &copy; {new Date().getFullYear()}
-            </span>
-        </footer>
+            <div>
+                <h1 class="heading mb-6">Doświadcz niezapomnianej zabawy!</h1>
+                <h3 class="subtext text-sm md:text-lg lg:text-xl xl:text-2xl">
+                    wesela • studniówki • imprezy okolicznościowe
+                </h3>
+            </div>
+        </section>
 
-        <script src="../scripts/Parallax.jsx"></script>
-        <script src="../scripts/Dragging.jsx"></script>
-    </body>
-</html>
+        <section class="px-4 overflow-hidden">
+            <div class="relative mb-5 sm:mb-14">
+                <Disks
+                    class="absolute top-[50%] right-[5%] h-4/5 z-[-1] transform translate-y-[-50%]"
+                />
+                <Image
+                    name="BK9A9028.jpg"
+                    alt="Zdjęcie grupy bawiących się na imprezie ludzi, prowadzonej przez DJ Rafaelo"
+                    class="parallax-right transition-all ease-out duration-75 will-change-transform w-4/5 md:w-2/3"
+                />
+            </div>
+            <div class="relative text-right">
+                <Disks
+                    class="absolute top-[50%] left-[5%] h-4/5 z-[-1] transform translate-y-[-50%]"
+                />
+                <Image
+                    name="BK9A9048.jpg"
+                    alt=""
+                    class="parallax-left transition-all ease-out duration-75 will-change-transform w-4/5 md:w-2/3"
+                />
+            </div>
+        </section>
+
+        <section
+            id="oferta"
+            class="max-w-4xl mx-auto pt-20 pb-32 lg:pt-40 lg:pb-56 px-6"
+        >
+            <h2 class="heading mb-12 md:mb-20 text-sub">Oferta</h2>
+            <p class="paragraph">
+                Oferuję usługi muzyczne na
+                <b>wesela, studniówki oraz imprezy okolicznościowe</b>.
+            </p>
+            <p class="paragraph">
+                Muzyka i animacje taneczne to <b>moja pasja</b>, dlatego
+                najlepszą premią za moją pracę jest <b>uśmiech gości</b>.
+            </p>
+            <p class="paragraph">
+                Dysponuję
+                <b>profesjonalnym sprzętem nagłaśniającym oraz oświetleniowym</b
+                >, co pozwala na doskonałą jakość dźwięku i stworzenie
+                nastrojowej atmosfery.
+            </p>
+            <p class="paragraph">
+                Gram legalne utwory, a moje animacje zapewniają wspaniałą
+                zabawę, zarówno dla
+                <b>dorosłych, jak i dzieci</b>.
+            </p>
+            <p class="paragraph mb-20">
+                Dla zainteresowanych, oferuję także prowadzenie imprez
+                <b>w języku niemieckim</b>.
+            </p>
+            <a
+                href="#kontakt"
+                class="mt-10 md:mt-16 inline-block px-6 py-2 rounded-full font-bold tracking-wide uppercase text-dark bg-accent shadow-glow transform hover:scale-[1.03] transition-transform ease-out duration-200 origin-bottom"
+            >
+                Zadzwoń teraz →
+            </a>
+        </section>
+
+        <section
+            id="slider"
+            class="cursor-grab bg-gradient-to-b from-[#0E0D0B_50%] to-[#1E1C18_50%] overflow-hidden"
+        >
+            <div
+                id="slider-rails"
+                class="px-4 flex flex-nowrap gap-5 w-[320vw] md:w-[270vw] xl:w-[160vw] select-none transition-all ease-out duration-75"
+            >
+                {
+                    data.reviewImages.map((image) => (
+                        <Image
+                            name={image.name}
+                            alt={image.alt}
+                            class="flex-grow w-[25vw] basis-[25vw] pointer-events-none"
+                        />
+                    ))
+                }
+            </div>
+        </section>
+
+        <section id="opinie" class="bg-mute px-5 py-20 md:py-32">
+            <h2 class="heading text-center mb-16 sm:mb-5 text-sub">
+                Co o mnie myślą
+            </h2>
+            <Reviews items={data.reviews} client:visible />
+        </section>
+
+        <section
+            id="kontakt"
+            class="flex justify-center md:items-stretch flex-col md:flex-row px-8 lg:px-20 py-20 lg:py-32 gap-14 lg:gap-20 xl:gap-40"
+        >
+            <Image
+                name="contact-image.jpg"
+                alt="TODO:"
+                class="mx-auto w-full basis-full md:w-2/5 md:basis-2/5 order-2 md:order-1"
+                objectPosition="60% 50%"
+            />
+            <div
+                class="flex flex-col justify-center w-full basis-full sm:w-4/5 sm:basis-4/5 md:w-3/5 md:basis-3/5 order-1 md:order-2"
+            >
+                <div>
+                    <h2 class="heading mb-8">Przekonaj się sam!</h2>
+                    <p class="paragraph">
+                        Jeśli szukasz <b>profesjonalnego DJ-a</b> z bogatym
+                        <b>doświadczeniem</b>, nie wahaj się i skontaktuj ze mną
+                        już dzisiaj!
+                    </p>
+                </div>
+                <div class="text-lg sm:text-xl lg:text-2xl mt-14 md:mt-24">
+                    <Contact />
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer
+        class="flex sm:justify-between items-center gap-16 p-5 md:p-10 pb-24 sm:pb-5"
+    >
+        <div class="w-36 md:w-48">
+            <Logo />
+        </div>
+        <span class="text-sub text-xs">
+            djrafaelo.pl &copy; {new Date().getFullYear()}
+        </span>
+    </footer>
+
+    <script src="../scripts/Parallax.jsx"></script>
+    <script src="../scripts/Dragging.jsx"></script>
+</Layout>
