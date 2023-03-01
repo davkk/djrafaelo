@@ -37,6 +37,7 @@ export function dragMove(ev) {
     if (!pressed()) {
     }
     else {
+        ev.preventDefault();
         const matchValue = ev.type;
         if (matchValue === "mousemove") {
             currX(ev.pageX);
@@ -59,7 +60,7 @@ export function dragMove(ev) {
     }
 }
 
-export function dragEnd(ev) {
+export function dragEnd(_arg) {
     pressed(false);
     setCursor("grab");
 }
@@ -80,19 +81,19 @@ sliderContainer.addEventListener("touchmove", (ev) => {
     dragMove(ev);
 });
 
-sliderContainer.addEventListener("mouseup", (ev) => {
-    dragEnd(ev);
+sliderContainer.addEventListener("mouseup", (arg00$0040) => {
+    dragEnd(arg00$0040);
 });
 
-sliderContainer.addEventListener("touchend", (ev) => {
-    dragEnd(ev);
+sliderContainer.addEventListener("touchend", (arg00$0040) => {
+    dragEnd(arg00$0040);
 });
 
-sliderContainer.addEventListener("mouseleave", (ev) => {
-    dragEnd(ev);
+sliderContainer.addEventListener("mouseleave", (arg00$0040) => {
+    dragEnd(arg00$0040);
 });
 
-sliderContainer.addEventListener("touchcancel", (ev) => {
-    dragEnd(ev);
+sliderContainer.addEventListener("touchcancel", (arg00$0040) => {
+    dragEnd(arg00$0040);
 });
 

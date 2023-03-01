@@ -42,6 +42,7 @@ let dragMove (ev: Event) =
     if not pressed then
         ()
     else
+        ev.preventDefault()
 
         match ev.``type`` with
         | "mousemove" -> currX <- (ev :?> MouseEvent).pageX
@@ -69,7 +70,7 @@ let dragMove (ev: Event) =
         else
             arrow.setAttribute("style", "opacity: 1")
 
-let dragEnd (ev: Event) =
+let dragEnd (_: Event) =
     pressed <- false
     setCursor "grab"
 
