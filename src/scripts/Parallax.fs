@@ -2,6 +2,7 @@ module Parallax
 
 open Browser
 open Browser.Types
+open Fable.Core.JsInterop
 
 type Parallax =
     | Left of element: HTMLElement
@@ -29,6 +30,11 @@ let parallaxElements =
         |> List.map Right
 
     left @ right
+
+let scrollOptions =
+    let o = createEmpty<AddEventListenerOptions>
+    o.passive <- true
+    o
 
 document.addEventListener (
     "scroll",
@@ -69,5 +75,6 @@ document.addEventListener (
                     $"transform: translateX({translationValue element}px)"
                 )
         )
-    )
+    ),
+    scrollOptions
 )

@@ -41,6 +41,12 @@ export const parallaxElements = (() => {
     return append(left, right);
 })();
 
+export const scrollOptions = (() => {
+    const o = {};
+    o.passive = true;
+    return o;
+})();
+
 document.addEventListener("scroll", (_arg) => {
     const parallaxRate = 0.2;
     const translationValue = (element) => {
@@ -59,5 +65,5 @@ document.addEventListener("scroll", (_arg) => {
             element_2.setAttribute("style", `transform: translateX(-${translationValue(element_2)}px)`);
         }
     }, parallaxElements);
-});
+}, scrollOptions);
 
