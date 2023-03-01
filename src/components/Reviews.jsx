@@ -64,9 +64,9 @@ export function Review($props) {
     const stars = <For each={toArray(rangeDouble(1, 1, $props.review.stars))}>
         {(_arg, _arg_1) => <Star></Star>}
     </For>;
-    const name = <h4 class="inline-flex items-center gap-2 text-sub text-base sm:text-lg md:text-2xl font-serif tracking-wide before:content-['•']">
+    const name = <small class="inline-flex items-center gap-2 text-sub text-base sm:text-lg md:text-2xl font-serif tracking-wide before:content-['•']">
         {$props.review.name}
-    </h4>;
+    </small>;
     return <div class="text-center opactiy-0 transition-all transform -translate-y-1 scale-90 origin-left animate-slide-up animate-once">
         <p class="paragraph">
             {`"${$props.review.content}"`}
@@ -83,6 +83,7 @@ export function Reviews($props) {
         const buttonClasses = "text-accent text-4xl transition-transform ease-out duration-200 absolute bottom-full sm:static";
         const buttonLeft = <button class={`${buttonClasses} sm:hover:-translate-x-1 left-0`}
             role={join(" ", ["button"])}
+            aria-label="poprzednia opinia"
             onClick={(_arg) => {
                 let x, m;
                 setCurrentReview((x = ((currentReview() - 1) | 0), (m = (props_1.items.length | 0), ((x % m) + m) % m)));
@@ -91,6 +92,7 @@ export function Reviews($props) {
         </button>;
         const buttonRight = <button class={`${buttonClasses} sm:hover:translate-x-1 right-0`}
             role={join(" ", ["button"])}
+            aria-label="następna opinia"
             onClick={(_arg_1) => {
                 let x_1, m_1;
                 setCurrentReview((x_1 = ((currentReview() - 1) | 0), (m_1 = (props_1.items.length | 0), ((x_1 % m_1) + m_1) % m_1)));

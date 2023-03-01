@@ -46,7 +46,7 @@ let Review (review) =
         Solid.For([| 1 .. review.stars |], (fun _ _ -> Icons.Star()))
 
     let name =
-        Html.h4
+        Html.small
             [
                 Attr.className
                     "inline-flex items-center gap-2 text-sub text-base sm:text-lg md:text-2xl font-serif tracking-wide before:content-['•']"
@@ -94,6 +94,7 @@ let Reviews (props: JsonValue) =
                         Attr.className
                             $"{buttonClasses} sm:hover:-translate-x-1 left-0"
                         Attr.role "button"
+                        Attr.ariaLabel "poprzednia opinia"
                         Ev.onClick (fun _ ->
                             setCurrentReview (
                                 (currentReview () - 1)
@@ -111,6 +112,7 @@ let Reviews (props: JsonValue) =
                         Attr.className
                             $"{buttonClasses} sm:hover:translate-x-1 right-0"
                         Attr.role "button"
+                        Attr.ariaLabel "następna opinia"
                         Ev.onClick (fun _ ->
                             setCurrentReview (
                                 (currentReview () - 1)
